@@ -26,5 +26,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("najoah.App")
+    mainClass.set("najoah.Game")
 }
