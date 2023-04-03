@@ -22,7 +22,7 @@ public class Prototype
 
         //Add rest of prototype here
 
-    
+       
 
         pikachu = new ImageIcon("pikachu.png");
         //bluePokemon = new ImageIcon("bluePokemon.png");
