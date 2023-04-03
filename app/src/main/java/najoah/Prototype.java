@@ -18,19 +18,21 @@ public class Prototype
 
         mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(400, 400));
+        mainPanel.setLayout(new BorderLayout());
 
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setPreferredSize(new Dimension(400,75));
+
+        JButton basic = new JButton("Basic Attack");
+        JButton special = new JButton("Special Attack");
+        JButton block = new JButton("Block");
 
         //Add rest of prototype here
 
-    
-
-        pikachu = new ImageIcon("pikachu.png");
-        //bluePokemon = new ImageIcon("bluePokemon.png");
-
-        pikachuLabel = new JLabel(pikachu);
-        //JLabel bluePokemonLabel = new JLabel(bluePokemon);
-
-        mainPanel.add(pikachuLabel);
+        bottomPanel.add(basic);
+        bottomPanel.add(special);
+        bottomPanel.add(block);
+        mainPanel.add(bottomPanel,BorderLayout.SOUTH);
 
         mainFrame.add(mainPanel);
         mainFrame.pack();
