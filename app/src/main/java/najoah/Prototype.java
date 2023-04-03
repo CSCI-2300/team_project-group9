@@ -29,10 +29,15 @@ public class Prototype
 
         //Add rest of prototype here
 
-        bottomPanel.add(basic);
-        bottomPanel.add(special);
-        bottomPanel.add(block);
-        mainPanel.add(bottomPanel,BorderLayout.SOUTH);
+       
+
+        pikachu = new ImageIcon("pikachu.png");
+        //bluePokemon = new ImageIcon("bluePokemon.png");
+
+        pikachuLabel = new JLabel(pikachu);
+        //JLabel bluePokemonLabel = new JLabel(bluePokemon);
+
+        mainPanel.add(pikachuLabel);
 
         mainFrame.add(mainPanel);
         mainFrame.pack();
