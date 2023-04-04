@@ -15,16 +15,18 @@ public class HealthBarPanel extends JPanel
     private JPanel visualBar;
     private JLabel owner;
 
-    public HealthBarPanel(String owner)
+    public HealthBarPanel(String owner,int currentHP)
     {
+        this.currentHP = currentHP;
         this.owner = new JLabel(owner);
+        
         textBar = new JLabel(currentHP+"/"+maxHP);
         visualBar = new JPanel();
         
         visualBar.setBackground(Color.RED);
         visualBar.setPreferredSize(new Dimension(40,15));
 
-        this.setPreferredSize(new Dimension(80,40));
+        this.setPreferredSize(new Dimension(40,80));
 
         this.add(this.owner);
         this.add(textBar);

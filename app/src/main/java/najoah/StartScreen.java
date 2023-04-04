@@ -30,7 +30,7 @@ public class StartScreen
         titleLabel = new JLabel("NaJoAh");
         newGameButton = new JButton("New Game");
         continueButton = new JButton("Continue");
-
+        
         startPanel.add(Box.createVerticalGlue());
         startPanel.add(titleLabel);
         startPanel.add(newGameButton);
