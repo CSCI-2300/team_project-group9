@@ -18,7 +18,14 @@ public class Prototype
 
         mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(400, 400));
+        mainPanel.setLayout(new BorderLayout());
 
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setPreferredSize(new Dimension(400,75));
+
+        JButton basic = new JButton("Basic Attack");
+        JButton special = new JButton("Special Attack");
+        JButton block = new JButton("Block");
 
         //Add rest of prototype here
         
