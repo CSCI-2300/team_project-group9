@@ -6,5 +6,6 @@ public class Game
     {
        //Prototype prototype = new Prototype(); 
         StartScreen startScreen = new StartScreen();
+        Prototype prototype = new Prototype();
     }
 }

@@ -21,16 +21,16 @@ public class Prototype
 
 
         //Add rest of prototype here
-
+        
        
 
-        pikachu = new ImageIcon("pikachu.png");
+        //pikachu = new ImageIcon("pikachu.png");
         //bluePokemon = new ImageIcon("bluePokemon.png");
 
-        pikachuLabel = new JLabel(pikachu);
+        //pikachuLabel = new JLabel(pikachu);
         //JLabel bluePokemonLabel = new JLabel(bluePokemon);
 
-        mainPanel.add(pikachuLabel);
+       // mainPanel.add(pikachuLabel);
 
         mainFrame.add(mainPanel);
         mainFrame.pack();

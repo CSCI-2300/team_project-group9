@@ -8,6 +8,7 @@ public class StartScreen
 {
     private JFrame mainFrame;
     private JPanel startPanel;
+    private JLabel titleLabel;
     private JButton newGameButton;
     private JButton continueButton;
     private BoxLayout boxLayout;
@@ -26,10 +27,12 @@ public class StartScreen
         startPanel.setPreferredSize(new Dimension(200, 200));
         startPanel.setLayout(new BoxLayout(startPanel, BoxLayout.Y_AXIS));
 
+        titleLabel = new JLabel("NaJoAh");
         newGameButton = new JButton("New Game");
         continueButton = new JButton("Continue");
 
         startPanel.add(Box.createVerticalGlue());
+        startPanel.add(titleLabel);
         startPanel.add(newGameButton);
         startPanel.add(continueButton);
         startPanel.add(Box.createVerticalGlue());
