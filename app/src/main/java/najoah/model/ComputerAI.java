@@ -6,18 +6,20 @@ import java.util.Random;
 
 public class ComputerAI
 {
-    private String nextMove;
+
+    private Pokemon pokemonCom;
 
     public ComputerAI()
     {
-        nextMove = "";
+        
+        pokemonCom = new Pokemon();
     }
 
     /** randomly selects the next move and returns it as a string. 
     * Move selection is weighted, basicAttack-40%, block-40%, specialAttack-20%.
     **/
 
-    public String getNextMove()
+    public void NextMove()
     {
         Random randomizer = new Random();
 
@@ -25,17 +27,16 @@ public class ComputerAI
         
         if (num < 40)
         {
-            nextMove = "basicAttack"; 
+            pokemonCom.makeMove(0);
         }
         else if (num >= 40 && num <= 79)
         {
-            nextMove = "block";
+            pokemonCom.makeMove(1);
         }
         else if (num > 79)
         {
-            nextMove = "specialAttack";
+            pokemonCom.makeMove(2);
         }
 
-        return nextMove;
     }
 }
