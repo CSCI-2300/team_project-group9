@@ -1,4 +1,4 @@
-package najoah;
+package najoah.model;
 
 import java.util.Random;
 

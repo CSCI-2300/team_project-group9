@@ -1,4 +1,4 @@
-package najoah;
+package najoah.gui;
 
 import java.awt.*;
 import javax.swing.*;
