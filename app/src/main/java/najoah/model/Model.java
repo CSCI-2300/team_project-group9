@@ -12,7 +12,8 @@ public class Model
 {
     private ComputerAI com;
     private MoveAlgorithm moveMagic;
-    private ArrayList<
+
+
     public Model()
     {
         com = new ComputerAI();

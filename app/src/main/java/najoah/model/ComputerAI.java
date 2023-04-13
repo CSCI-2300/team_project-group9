@@ -1,5 +1,7 @@
 package najoah.model;
 
+import najoah.model.pokemon.Pokemon;
+
 import java.util.Random;
 
 //Class that will create a computer AI that will randomly select the next move
@@ -37,6 +39,19 @@ public class ComputerAI
         {
             pokemonCom.makeMove(2);
         }
+
+    }
+
+    //setting a new pokemon for Ai for next battle
+    public void setPokemon(Pokemon newPoke)
+    {
+        this.pokemonCom = newPoke;
+    }
+
+    //getting the pokemon the ai currently has
+    public Pokemon getPokemon()
+    {
+        return pokemonCom;
 
     }
 }

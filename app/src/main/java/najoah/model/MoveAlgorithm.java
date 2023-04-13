@@ -8,7 +8,10 @@ have some level of uniqieness between pokemon
 */
 public class MoveAlgorithm
 {
-
+    public MoveAlgorithm()
+    {
+        
+    }
 
 
 

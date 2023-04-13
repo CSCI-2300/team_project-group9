@@ -1,6 +1,8 @@
-package najoah.model.pokemon;
+package najoah.model.pokemon.moves;
 
-public class Move()
+
+//setting this up as a super class to be used later for passing args
+public class Move
 {
     protected String name;
 
