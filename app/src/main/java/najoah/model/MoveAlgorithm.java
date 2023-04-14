@@ -17,6 +17,7 @@ public class MoveAlgorithm
 
     }
 
+    //this will change the values of health and etc. based on math for moves
     public void bustAMove(Pokemon user, Pokemon com)
     {
         Move userMove = user.getMove();
