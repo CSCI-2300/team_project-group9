@@ -17,14 +17,15 @@ public class Pokemon
     AttackMove basic;
     AttackMove special;
     Move block;
-    int health;
-
+    int healthMax;
+    int healthCurrent;
     //this is to send the move selected to the model, to the move algorithm
     Move selected;
 
     public Pokemon()
     {
-        health = 50;
+        healthMax = 50;
+        healthCurrent = healthMax;
         basic = new AttackMove("basic",false);
         special = new AttackMove("special",true);
         block = new Move("block");
@@ -52,12 +53,22 @@ public class Pokemon
 
     public void adjustHealth(int delta)
     {
-        this.health += delta;
+        this.healthCurrent -= delta;
     }
     
     public Move getMove()
     {
         return selected;
+    }
+    
+    public int getHealthMax()
+    {
+        return this.healthMax;
+    }
+
+    public int getHealthCurrent()
+    {
+        return this.healthCurrent;
     }
 
 } 
