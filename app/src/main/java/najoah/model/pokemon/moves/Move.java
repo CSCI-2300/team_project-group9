@@ -6,7 +6,7 @@ public interface Move
 {
     protected String name;
 
-    //move types can be "attack" or "block"
+    //move types can be "attack" or "block" --- made move 
     public Move(String name)
     { 
     }
