@@ -31,5 +31,6 @@ public class Controller
     public void playTurn(String move) 
     {
         gameModel.turn(move);
+        gameView.update();
     }
 }
