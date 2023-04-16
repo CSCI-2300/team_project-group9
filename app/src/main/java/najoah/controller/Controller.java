@@ -18,7 +18,7 @@ The view layer updates the game interface to reflect the changes in the game sta
 public class Controller
 {
     private Model gameModel;
-    private Prototype gameView;
+    private GameGUI gameView;
     
 
     public Controller(Model gameModel) /// 

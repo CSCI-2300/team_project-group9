@@ -1,7 +1,7 @@
 package najoah.model;
 
-
-
+import najoah.model.pokemon.*;
+import najoah.gui.GameGUI;
 /*
 this will be our Model, in here all other logical classes will be held
 whenever an action occurs that would need to change logic, it is done through
@@ -16,7 +16,7 @@ public class Model
     private ComputerAI com;
     private User user;
     private MoveAlgorithm moveMagic;
-
+    private GameGUI gui;
 
     public Model()
     {
@@ -54,9 +54,21 @@ public class Model
 
     }
 
-    private void updateObservers()
+    public Pokemon[] getPokemon()
     {
+        Pokemon[] arr ={user.getPokemon(),com.getPokemon()};
 
+        return arr;
+    }
+
+    private void updateGui()
+    {
+        gui.update();
+    }
+    
+    public void register(GameGUI gui)
+    {
+        this.gui = gui;
     }
 }
 
