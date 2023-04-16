@@ -19,6 +19,8 @@ public class Controller
 {
     //protected Model model; 
     /// I don't know what to call for the player's move
+    // Noah: here you take what button is pressed, and alert the model that a player has moved and pass the variable
+    //ill build a user class to hold onto what the player owns so that model can acess it
     protected Pokemon user;
     protected Pokemon computer;
     protected ComputerAI comAI;
