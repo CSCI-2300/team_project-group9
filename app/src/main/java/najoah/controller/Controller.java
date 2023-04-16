@@ -18,13 +18,13 @@ The view layer updates the game interface to reflect the changes in the game sta
 public class Controller
 {
     private Model gameModel;
-    private Prototype gameView;
+    private GameGUI gameView;
     
 
     public Controller(Model gameModel) /// 
     {  
         this.gameModel = gameModel;
-        //this.gameView = new Prototype(this,gameModel);
+        this.gameView = new GameGUI(gameModel,this);
         // ^ this will need to be 
 
     }   
