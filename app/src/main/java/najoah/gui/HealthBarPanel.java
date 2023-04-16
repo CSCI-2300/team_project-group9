@@ -9,7 +9,7 @@ import java.awt.event.*;
 
 public class HealthBarPanel extends JPanel
 {   
-    private int currentHP = 37;
+    private int currentHP;
     private int maxHP = 50;
     private JLabel textBar;
     private JPanel visualBar;
@@ -34,5 +34,9 @@ public class HealthBarPanel extends JPanel
         
     }
 
-
+    public void changeHealth(int currentHP)
+    {
+        this.currentHP = currentHP;
+        textBar.setText(this.currentHP+"/"+this.maxHP);
+    }
 }
