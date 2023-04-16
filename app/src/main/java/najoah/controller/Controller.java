@@ -26,20 +26,18 @@ public class Controller
     protected ComputerAI comAI;
     protected MoveAlgorithm moveAlgorithm;
 
-    public Controller(Pokemon user, ComputerAI comAI, MoveAlgorithm moveAlgorithm) /// 
+    public Controller(Model model) /// 
     {
-        this.user = user;
-        this.comAI = comAI;
-        this.moveAlgorithm = moveAlgorithm;
+
+
     }
 
-    public void playTurn(Move playerMove) 
+    public void playTurn(String move) 
     {
         /* /// not sure how to reference the computer's move
         and how we are clearly differentiating the two */
-        Move computerMove = comAI.NextMove();
-        moveAlgorithm.bustAMove(user,computer);
-
+        Move playerMove = new Move(move);
+        
         // should take in users input, call the computer's move
         // then send it to the moveAlgorithm to update health
     }
