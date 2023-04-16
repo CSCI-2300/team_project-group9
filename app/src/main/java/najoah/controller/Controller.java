@@ -24,7 +24,7 @@ public class Controller
     public Controller(Model gameModel) /// 
     {  
         this.gameModel = gameModel;
-        //this.gameView = new Prototype(this,gameModel);
+        this.gameView = new GameGUI(gameModel,this);
         // ^ this will need to be 
 
     }   
