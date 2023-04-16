@@ -39,15 +39,15 @@ public class Model
         
         switch(move)
         {
-            case "basic":
+            case "Basic Attack":
                 user.makeMove(0);
                 break;
 
-            case "special":
+            case "Special Attack":
                 user.makeMove(1);
                 break;
 
-            case "block":
+            case "Block":
                 user.makeMove(2);
                 break;
         }

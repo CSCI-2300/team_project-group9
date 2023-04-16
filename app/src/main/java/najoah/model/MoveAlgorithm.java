@@ -22,7 +22,7 @@ public class MoveAlgorithm
     {
         boolean userisAttack = user.getMove() instanceof AttackMove;
         boolean comisAttack = com.getMove() instanceof AttackMove;
-        
+        System.out.println(user.getMove().getName()+ " " + com.getMove().getName());
         //this is where code for type checks, dmg calculations and edits of health
         //gating if both are blocks
         if(comisAttack && userisAttack)
@@ -52,7 +52,7 @@ public class MoveAlgorithm
 
 
     //if an attack carries out, one defends one does not
-    public void attacked(Pokemon attacker, Pokemon defender)
+    private void attacked(Pokemon attacker, Pokemon defender)
     {
         //if non special 
         if(attacker.getMove().getIsSpecial())

@@ -29,6 +29,7 @@ public class Pokemon
         basic = new AttackMove("basic",false);
         special = new AttackMove("special",true);
         block = new Move("block");
+        selected = basic;
     }
 
 
