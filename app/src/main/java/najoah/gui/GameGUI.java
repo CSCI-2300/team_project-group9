@@ -5,17 +5,28 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class Prototype
+import najoah.controller.*;
+import najoah.model.*;
+
+public class GameGUI implements ActionListener
 {
     private JFrame mainFrame;
     private JPanel mainPanel;
     private ImageIcon pikachu;
+    private Controller controller;
+    private Model model;
+    private HealthBarPanel playerHP;
+    private HealthBarPanel computerHP;
+
     //private ImageIcon bluePokemon;
     //JLabel pikachuLabel;
     
 
-    public Prototype()
+    public GameGUI(Model model, Controller controller)
     {
+        this.controller = controller;
+        this.model = model;
+
         mainFrame = new JFrame();
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -31,20 +42,21 @@ public class Prototype
         bottomPanel.setPreferredSize(new Dimension(400,75));
 
         JButton basic = new JButton("Basic Attack");
+        basic.addActionListener(this);
         JButton special = new JButton("Special Attack");
+        special.addActionListener(this);
         JButton block = new JButton("Block");
+        block.addActionListener(this);
 
-        HealthBarPanel playerHP = new HealthBarPanel("Player", 37);
-        HealthBarPanel enemyHP = new HealthBarPanel("Enemy", 50);
+        this.playerHP = new HealthBarPanel("Player", 50);
+        this.computerHP = new HealthBarPanel("Computer", 50);
 
         topPanel.add(playerHP);
-        topPanel.add(enemyHP);
+        topPanel.add(computerHP);
 
         bottomPanel.add(basic);
         bottomPanel.add(special);
         bottomPanel.add(block);
-        //Add rest of prototype here
-        
        
 
         //pikachu = new ImageIcon("pikachu.png");
@@ -60,5 +72,23 @@ public class Prototype
         mainFrame.pack();
         mainFrame.setVisible(true);
 
+    }
+
+
+    //Gets input from user and returns selected move as a string
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        JButton button = (JButton)e.getSource();
+        String move = button.getText();
+
+        //tell controller about selected move
+        this.controller.playTurn(move);
+    }
+
+    public void updateHealth(int playerHealth, int computerHealth)
+    {
+        this.playerHP.changeHealth(playerHealth);
+        this.computerHP.changeHealth(computerHealth);
     }
 }
