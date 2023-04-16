@@ -1,12 +1,13 @@
 package najoah;
 
+import najoah.controller.*;
+import najoah.model.*;
 
 public class Game 
 {
     public static void main(String[] args) 
     {
-       //this is where we will create a controller and the gui
-       //new
-       //Controller cont = new Controller();
+       Model model = new Model();
+       Controller cont = new Controller(model);
     }
 }

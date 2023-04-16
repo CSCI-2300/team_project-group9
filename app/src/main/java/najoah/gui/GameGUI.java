@@ -7,6 +7,7 @@ import java.util.*;
 
 import najoah.controller.*;
 import najoah.model.*;
+import najoah.model.pokemon.*;
 
 public class GameGUI implements ActionListener
 {
@@ -86,9 +87,11 @@ public class GameGUI implements ActionListener
         this.controller.playTurn(move);
     }
 
-    public void updateHealth(int playerHealth, int computerHealth)
+    public void update()
     {
-        this.playerHP.changeHealth(playerHealth);
-        this.computerHP.changeHealth(computerHealth);
+        Pokemon[] pokes = model.getPokemon();
+        this.playerHP.changeHealth(pokes[0].getHealthCurrent());
+        this.computerHP.changeHealth(pokes[1].getHealthCurrent());
     }
+
 }
