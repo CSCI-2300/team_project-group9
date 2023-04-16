@@ -27,15 +27,15 @@ public class ComputerAI
 
         int num = randomizer.nextInt(100);
         
-        if (num < 40)
+        if (num < 26)
         {
             pokemonCom.makeMove(0);
         }
-        else if (num >= 40 && num <= 79)
+        else if (num >= 26 && num <= 51)
         {
             pokemonCom.makeMove(1);
         }
-        else if (num > 79)
+        else if (num > 51)
         {
             pokemonCom.makeMove(2);
         }
