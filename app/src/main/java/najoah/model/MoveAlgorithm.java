@@ -20,18 +20,16 @@ public class MoveAlgorithm
     //this will change the values of health and etc. based on math for moves
     public void bustAMove(Pokemon user, Pokemon com)
     {
-        Move userMove = user.getMove();
-        Move comMove = com.getMove();
-        boolean userisAttack = userMove instanceof AttackMove;
-        boolean comisAttack = comMove instanceof AttackMove;
+        boolean userisAttack = user.getMove() instanceof AttackMove;
+        boolean comisAttack = com.getMove() instanceof AttackMove;
         
         //this is where code for type checks, dmg calculations and edits of health
         //gating if both are blocks
         if(comisAttack && userisAttack)
         {
             //if neither are blocks
-            com.adjustHealth(userMove.getDmg());
-            user.adjustHealth(comMove.getDmg());
+            com.adjustHealth(user.getMove().getDmg());
+            user.adjustHealth(com.getMove().getDmg());
 
         }
         else if (comisAttack)

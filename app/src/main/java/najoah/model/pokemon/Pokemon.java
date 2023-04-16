@@ -14,8 +14,8 @@ public class Pokemon
 {   
 
     //this is all the standard rn
-    AttackMove basic;
-    AttackMove special;
+    Move basic;
+    Move special;
     Move block;
     int healthMax;
     int healthCurrent;
