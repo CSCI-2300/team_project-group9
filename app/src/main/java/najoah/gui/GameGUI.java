@@ -5,6 +5,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
+import najoah.controller.*;
+import najoah.model.*;
+
 public class GameGUI implements ActionListener
 {
     private JFrame mainFrame;

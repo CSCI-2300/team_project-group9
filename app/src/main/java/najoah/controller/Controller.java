@@ -17,29 +17,20 @@ The view layer updates the game interface to reflect the changes in the game sta
 
 public class Controller
 {
-    //protected Model model; 
-    /// I don't know what to call for the player's move
-    // Noah: here you take what button is pressed, and alert the model that a player has moved and pass the variable
-    //ill build a user class to hold onto what the player owns so that model can acess it
-    protected Pokemon user;
-    protected Pokemon computer;
-    protected ComputerAI comAI;
-    protected MoveAlgorithm moveAlgorithm;
+    private Model gameModel;
+    private Prototype gameView;
+    
 
-    public Controller(Model model) /// 
-    {
+    public Controller(Model gameModel) /// 
+    {  
+        this.gameModel = gameModel;
+        //this.gameView = new Prototype(this,gameModel);
+        // ^ this will need to be 
 
-
-    }
+    }   
 
     public void playTurn(String move) 
     {
-        /* /// not sure how to reference the computer's move
-        and how we are clearly differentiating the two */
-        Move playerMove = new Move(move);
-        
-        // should take in users input, call the computer's move
-        // then send it to the moveAlgorithm to update health
+        gameModel.turn(move);
     }
-    
 }

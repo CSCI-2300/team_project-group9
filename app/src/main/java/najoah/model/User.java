@@ -19,7 +19,8 @@ public class User {
     public void makeMove(String move) 
     {
         // Use the selected move to attack the opponent's Pokemon
-        pokemon.makeMove(losses);
+        int moveNumber = move.parseInt();
+        pokemon.makeMove();
        
     }
 
