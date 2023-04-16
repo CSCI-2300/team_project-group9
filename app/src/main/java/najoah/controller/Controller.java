@@ -21,11 +21,10 @@ public class Controller
     private GameGUI gameView;
     
 
-    public Controller(Model gameModel) /// 
+    public Controller(Model gameModel) 
     {  
         this.gameModel = gameModel;
         this.gameView = new GameGUI(gameModel,this);
-        // ^ this will need to be 
 
     }   
 
