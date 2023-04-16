@@ -28,6 +28,7 @@ public class Pokemon
         healthCurrent = healthMax;
         basic = new AttackMove("basic",false);
         special = new AttackMove("special",true);
+        special.setDmg(4);
         block = new Move("block");
         selected = basic;
     }

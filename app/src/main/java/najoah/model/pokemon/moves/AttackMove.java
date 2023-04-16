@@ -13,7 +13,7 @@ public class AttackMove extends Move
     {
         super(name);
         this.isSpecial = isSpecial;
-        dmg = 5;
+        dmg = 6;
         
     }
 
