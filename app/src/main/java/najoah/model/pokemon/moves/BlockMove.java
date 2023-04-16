@@ -1,3 +1,7 @@
+package najoah.model.pokemon.moves;
+
+import najoah.model.pokemon.moves.*;
+
 public class BlockMove extends Move
 {
     protected String name;

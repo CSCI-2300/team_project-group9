@@ -18,18 +18,22 @@ public class AttackMove extends Move
     }
 
     //used to find the dmg by the move alogrithm
-    public int getDmg()
-    {
-        return dmg;
-    }
+
 
     public void setDmg(int dmg)
     {
         this.dmg = dmg;
     }
+        
+    @Override
+    public int getDmg()
+    {
+        return dmg;
+    }
 
     //if a move is special the move algortihm will acount for that
-    public boolean getisSpecial()
+    @Override
+    public boolean getIsSpecial()
     {
         return isSpecial;
     }

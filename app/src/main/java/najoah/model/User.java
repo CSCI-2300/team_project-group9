@@ -10,16 +10,16 @@ public class User {
     private int wins;
     private int losses;
 
-    public User(Pokemon pokemon) {
-        this.pokemon = pokemon;
+    public User() {
+        this.pokemon = new Pokemon();
         this.wins = 0;
         this.losses = 0;
     }
 
-    public void makeMove(String move) 
+    public void makeMove(int num) 
     {
         // Use the selected move to attack the opponent's Pokemon
-        pokemon.makeMove(losses);
+        pokemon.makeMove(num);
        
     }
 

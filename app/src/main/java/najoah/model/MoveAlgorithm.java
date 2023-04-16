@@ -55,7 +55,7 @@ public class MoveAlgorithm
     public void attacked(Pokemon attacker, Pokemon defender)
     {
         //if non special 
-        if(attacker.getMove().isSpecial())
+        if(attacker.getMove().getIsSpecial())
         {
             defender.adjustHealth(attacker.getMove().getDmg()*2);
             return;

@@ -21,7 +21,7 @@ public class ComputerAI
     * Move selection is weighted, basicAttack-40%, block-40%, specialAttack-20%.
     **/
 
-    public void NextMove()
+    public void nextMove()
     {
         Random randomizer = new Random();
 

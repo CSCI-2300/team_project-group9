@@ -17,4 +17,14 @@ public class Move
         return name;
     }
 
+    public int getDmg()
+    {
+        return 0;
+    }
+    
+    public boolean getIsSpecial()
+    {
+        return false;
+    }
+    
 }
