@@ -41,6 +41,9 @@ public class GameGUI implements ActionListener
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER,150,50));
         topPanel.setPreferredSize(new Dimension(400,100));
         bottomPanel.setPreferredSize(new Dimension(400,75));
+        
+        //trying to make pokemon appear horizontal to each other healthbar code  bugged
+        //topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
         this.moveLabel = new JLabel();
         Border border = BorderFactory.createLineBorder(Color.BLACK);
@@ -59,6 +62,7 @@ public class GameGUI implements ActionListener
 
         topPanel.add(playerHP);
         topPanel.add(computerHP);
+
 
         bottomPanel.add(moveLabel);
         bottomPanel.add(basic);
