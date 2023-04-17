@@ -39,7 +39,12 @@ public class HealthBarPanel extends JPanel
         visualBar.setBackground(Color.RED);
         visualBar.setPreferredSize(new Dimension(50,15));
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-       
+
+        this.owner.setOpaque(true);
+        textBar.setOpaque(true);
+        visualBar.setOpaque(true);
+
+        this.setOpaque(false);
 
         this.add(this.owner);
         this.add(textBar);

@@ -10,6 +10,11 @@ import najoah.controller.*;
 import najoah.model.*;
 import najoah.model.pokemon.*;
 
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
+
+
 public class GameGUI implements ActionListener
 {
     private JFrame mainFrame;
@@ -21,8 +26,11 @@ public class GameGUI implements ActionListener
     private HealthBarPanel playerHP;
     private HealthBarPanel computerHP;
 
-    //private ImageIcon bluePokemon;
-    //JLabel pikachuLabel;
+    private JLayeredPane layering;
+
+    private BufferedImage forestImage;
+    private JLabel forestLabel;
+   
     
 
     public GameGUI(Model model, Controller controller)
@@ -30,17 +38,35 @@ public class GameGUI implements ActionListener
         this.controller = controller;
         this.model = model;
 
+        forestLabel = new JLabel();
+        InputStream input = getClass().getClassLoader().getResourceAsStream("Drawing 3.png");
+        try
+        {
+            forestImage = ImageIO.read(input);
+            forestLabel.setIcon(new ImageIcon(new ImageIcon(forestImage).getImage().getScaledInstance(768, 256, Image.SCALE_DEFAULT)));
+            forestLabel.setBounds(30,8,769,257);
+            //forestLabel.setOpaque(true);
+            //forestLabel.setLayout(new BorderLayout());
+        }
+        catch(Exception e){}
+
+        layering = new JLayeredPane();
+        //layering.setPreferredSize(new Dimension(770,300));
+        layering.setBounds(0,0,770,300);
+    
         mainFrame = new JFrame();
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         mainPanel = new JPanel();
-        mainPanel.setPreferredSize(new Dimension(500, 400));
+        mainPanel.setPreferredSize(new Dimension(800, 400));
         mainPanel.setLayout(new BorderLayout());
 
         JPanel bottomPanel = new JPanel();
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER,150,50));
-        topPanel.setPreferredSize(new Dimension(400,100));
-        bottomPanel.setPreferredSize(new Dimension(400,75));
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(null);
+
+        //topPanel.setPreferredSize(new Dimension(800,300));
+        bottomPanel.setPreferredSize(new Dimension(300,75));
         
         //trying to make pokemon appear horizontal to each other healthbar code  bugged
         //topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
@@ -59,10 +85,15 @@ public class GameGUI implements ActionListener
 
         this.playerHP = new HealthBarPanel("Player", 50);
         this.computerHP = new HealthBarPanel("Computer", 50);
-
-        topPanel.add(playerHP);
-        topPanel.add(computerHP);
-
+        
+        playerHP.setBounds(70,50,150,160);
+        computerHP.setBounds(600,50,150,160);
+        
+        layering.add(forestLabel,0);
+        layering.add(playerHP,0);
+        layering.add(computerHP,0);
+       
+        topPanel.add(layering);
 
         bottomPanel.add(moveLabel);
         bottomPanel.add(basic);
@@ -71,13 +102,6 @@ public class GameGUI implements ActionListener
         bottomPanel.add(moveLabel);
        
 
-        //pikachu = new ImageIcon("pikachu.png");
-        //bluePokemon = new ImageIcon("bluePokemon.png");
-
-        //pikachuLabel = new JLabel(pikachu);
-        //JLabel bluePokemonLabel = new JLabel(bluePokemon);
-
-       // mainPanel.add(pikachuLabel);
         mainPanel.add(topPanel, BorderLayout.CENTER);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
         mainFrame.add(mainPanel);
