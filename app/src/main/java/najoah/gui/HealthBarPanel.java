@@ -31,7 +31,7 @@ public class HealthBarPanel extends JPanel
         this.owner = new JLabel(owner);
         
         textBar = new JLabel(currentHP+"/"+maxHP);
-        visualBar = new JPanel();setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
+        visualBar = new JPanel();
         pkmonLabel = new JLabel();
         InputStream input = getClass().getClassLoader().getResourceAsStream("Gradle Bug.png");
         try
