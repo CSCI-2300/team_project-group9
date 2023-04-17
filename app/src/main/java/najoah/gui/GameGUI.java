@@ -30,6 +30,19 @@ public class GameGUI implements ActionListener
 
     private BufferedImage forestImage;
     private JLabel forestLabel;
+
+    /*########################################3
+    we need to redo a bit of this, 
+    one, make a background class that can create the image and load it to a layered panel
+    two, load health and pokemon into one class panel
+    three, load both pokemon wiht health onto the background class
+    four, load background as top panel
+
+
+    ##############
+    lets try to make it as little hardcoded as possible so we can edit and change health bar size
+    with little code rewrite
+    */
    
     
 
@@ -86,9 +99,9 @@ public class GameGUI implements ActionListener
         this.playerHP = new HealthBarPanel("Player", 50);
         this.computerHP = new HealthBarPanel("Computer", 50);
         
+        //this can be relatively hardcoded, or we can set this too be scaled as aratio off of main panel size/frame
         playerHP.setBounds(70,50,150,160);
         computerHP.setBounds(600,50,150,160);
-        
         layering.add(forestLabel,0);
         layering.add(playerHP,0);
         layering.add(computerHP,0);

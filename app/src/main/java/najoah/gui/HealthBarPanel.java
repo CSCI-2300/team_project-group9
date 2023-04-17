@@ -10,6 +10,11 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.ImageIO;
 
+/*we should make this specifically a healthbar class, with name
+we should then have a sperate class for the pokemon to be loaded,
+then throw all of it into one panel
+*/
+
 public class HealthBarPanel extends JPanel
 {   
     private int currentHP;
@@ -26,7 +31,7 @@ public class HealthBarPanel extends JPanel
         this.owner = new JLabel(owner);
         
         textBar = new JLabel(currentHP+"/"+maxHP);
-        visualBar = new JPanel();
+        visualBar = new JPanel();setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
         pkmonLabel = new JLabel();
         InputStream input = getClass().getClassLoader().getResourceAsStream("Gradle Bug.png");
         try
