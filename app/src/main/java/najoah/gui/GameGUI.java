@@ -100,8 +100,8 @@ public class GameGUI implements ActionListener
         this.computerHP = new HealthBarPanel("Computer", 50);
         
         //this can be relatively hardcoded, or we can set this too be scaled as aratio off of main panel size/frame
-        playerHP.setBounds(70,50,150,160);
-        computerHP.setBounds(600,50,150,160);
+        playerHP.setBounds(70,40,150,176);
+        computerHP.setBounds(600,40,150,176);
         layering.add(forestLabel,0);
         layering.add(playerHP,0);
         layering.add(computerHP,0);
