@@ -24,9 +24,9 @@ public class HealthBarPanel extends JPanel
         visualBar = new JPanel();
         
         visualBar.setBackground(Color.RED);
-        visualBar.setPreferredSize(new Dimension(40,15));
+        visualBar.setPreferredSize(new Dimension(50,15));
 
-        this.setPreferredSize(new Dimension(40,80));
+        this.setPreferredSize(new Dimension(65,80));
 
         this.add(this.owner);
         this.add(textBar);
@@ -38,5 +38,10 @@ public class HealthBarPanel extends JPanel
     {
         this.currentHP = currentHP;
         textBar.setText(this.currentHP+"/"+this.maxHP);
+    }
+
+    public void lowerHealthBar()
+    {
+        visualBar.setPreferredSize(new Dimension(this.currentHP,15));
     }
 }
