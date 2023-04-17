@@ -17,12 +17,14 @@ public class Model
     private User user;
     private MoveAlgorithm moveMagic;
     private GameGUI gui;
+    private String winner;
 
     public Model()
     {
         com = new ComputerAI();
         moveMagic = new MoveAlgorithm();
         user = new User();
+        
     }
 
     public void turn(String move)
@@ -30,7 +32,6 @@ public class Model
         this.userTurn(move);
         com.nextMove();
         moveMagic.bustAMove(user.getPokemon(),com.getPokemon());
-
 
     }
 

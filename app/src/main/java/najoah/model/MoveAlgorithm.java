@@ -29,6 +29,8 @@ public class MoveAlgorithm
         {
             //if neither are blocks
             com.adjustHealth(user.getMove().getDmg());
+            if(com.getHealthCurrent() <= 0)
+                return;
             user.adjustHealth(com.getMove().getDmg());
 
         }

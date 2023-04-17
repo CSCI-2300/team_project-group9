@@ -35,8 +35,11 @@ public class HealthBarPanel extends JPanel
     }
 
     public void changeHealth(int currentHP)
-    {
-        this.currentHP = currentHP;
+    {   
+        if(currentHP >= 0)
+            this.currentHP = currentHP;
+        else
+            this.currentHP = 0;
         textBar.setText(this.currentHP+"/"+this.maxHP);
     }
 }
