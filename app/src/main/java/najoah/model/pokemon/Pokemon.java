@@ -26,10 +26,10 @@ public class Pokemon
     {
         healthMax = 50;
         healthCurrent = healthMax;
-        basic = new AttackMove("basic",false);
-        special = new AttackMove("special",true);
+        basic = new AttackMove("Basic Attack",false);
+        special = new AttackMove("Special Attack",true);
         special.setDmg(4);
-        block = new Move("block");
+        block = new Move("Block");
         selected = basic;
     }
 

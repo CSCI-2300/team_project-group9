@@ -3,6 +3,7 @@ package najoah.gui;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.util.*;
 
 import najoah.controller.*;
@@ -13,6 +14,7 @@ public class GameGUI implements ActionListener
 {
     private JFrame mainFrame;
     private JPanel mainPanel;
+    private JLabel moveLabel;
     private ImageIcon pikachu;
     private Controller controller;
     private Model model;
@@ -32,15 +34,18 @@ public class GameGUI implements ActionListener
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         mainPanel = new JPanel();
-        mainPanel.setPreferredSize(new Dimension(400, 400));
+        mainPanel.setPreferredSize(new Dimension(500, 400));
         mainPanel.setLayout(new BorderLayout());
 
         JPanel bottomPanel = new JPanel();
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER,150,50));
-        
-
         topPanel.setPreferredSize(new Dimension(400,100));
         bottomPanel.setPreferredSize(new Dimension(400,75));
+
+        this.moveLabel = new JLabel();
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        this.moveLabel.setBorder(border);
+        this.moveLabel.setVerticalAlignment(JLabel.BOTTOM);
 
         JButton basic = new JButton("Basic Attack");
         basic.addActionListener(this);
@@ -55,9 +60,11 @@ public class GameGUI implements ActionListener
         topPanel.add(playerHP);
         topPanel.add(computerHP);
 
+        bottomPanel.add(moveLabel);
         bottomPanel.add(basic);
         bottomPanel.add(special);
         bottomPanel.add(block);
+        bottomPanel.add(moveLabel);
        
 
         //pikachu = new ImageIcon("pikachu.png");
@@ -91,7 +98,11 @@ public class GameGUI implements ActionListener
     {
         Pokemon[] pokes = model.getPokemon();
         this.playerHP.changeHealth(pokes[0].getHealthCurrent());
+        this.playerHP.lowerHealthBar();
         this.computerHP.changeHealth(pokes[1].getHealthCurrent());
+        this.computerHP.lowerHealthBar();
+
+        this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
     }
 
 }
