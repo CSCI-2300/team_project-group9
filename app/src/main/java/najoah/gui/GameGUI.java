@@ -90,10 +90,13 @@ public class GameGUI implements ActionListener
         this.moveLabel.setVerticalAlignment(JLabel.BOTTOM);
 
         JButton basic = new JButton("Basic Attack");
+        basic.setPreferredSize(new Dimension(150,25));
         basic.addActionListener(this);
         JButton special = new JButton("Special Attack");
+        special.setPreferredSize(new Dimension(150,25));
         special.addActionListener(this);
         JButton block = new JButton("Block");
+        block.setPreferredSize(new Dimension(150,25));
         block.addActionListener(this);
 
         this.playerHP = new HealthBarPanel("Player", 50);
@@ -119,6 +122,7 @@ public class GameGUI implements ActionListener
 
         mainPanel.add(topPanel, BorderLayout.CENTER);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        mainPanel.add(screen);
         mainFrame.add(mainPanel);
         mainFrame.pack();
         mainFrame.setVisible(true);
@@ -146,6 +150,6 @@ public class GameGUI implements ActionListener
         this.computerHP.lowerHealthBar();
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
-    }
+    } 
 
 }
