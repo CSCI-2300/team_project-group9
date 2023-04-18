@@ -63,43 +63,51 @@ public class GameGUI implements ActionListener
         }
         catch(Exception e){}
 
+
         layering = new JLayeredPane();
         //layering.setPreferredSize(new Dimension(770,300));
         layering.setBounds(0,0,770,300);
-    
+
+
+        //making proper frame
         mainFrame = new JFrame();
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //making main panel
         mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(800, 400));
         mainPanel.setLayout(new BorderLayout());
 
+        //making the two panels top and bottum
         JPanel bottomPanel = new JPanel();
         JPanel topPanel = new JPanel();
         topPanel.setLayout(null);
 
-        //topPanel.setPreferredSize(new Dimension(800,300));
+        topPanel.setPreferredSize(new Dimension(800,300));
         bottomPanel.setPreferredSize(new Dimension(300,75));
         
-        //trying to make pokemon appear horizontal to each other healthbar code  bugged
-        //topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
-
-        this.moveLabel = new JLabel();
+        //making move Label
         Border border = BorderFactory.createLineBorder(Color.BLACK);
+        this.moveLabel = new JLabel();
         this.moveLabel.setBorder(border);
         this.moveLabel.setVerticalAlignment(JLabel.BOTTOM);
 
+        //creating moves
         JButton basic = new JButton("Basic Attack");
         basic.setPreferredSize(new Dimension(150,25));
         basic.addActionListener(this);
+
         JButton special = new JButton("Special Attack");
         special.setPreferredSize(new Dimension(150,25));
         special.addActionListener(this);
+
         JButton block = new JButton("Block");
         block.setPreferredSize(new Dimension(150,25));
         block.addActionListener(this);
 
+        //making seperate pokemon panels
         this.playerHP = new HealthBarPanel("Player", 50);
+        
         this.computerHP = new HealthBarPanel("Computer", 50);
 
         
@@ -122,7 +130,7 @@ public class GameGUI implements ActionListener
 
         mainPanel.add(topPanel, BorderLayout.CENTER);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-        mainPanel.add(screen);
+        //mainPanel.add(screen);
         mainFrame.add(mainPanel);
         mainFrame.pack();
         mainFrame.setVisible(true);
@@ -144,10 +152,9 @@ public class GameGUI implements ActionListener
     public void update()
     {
         Pokemon[] pokes = model.getPokemon();
-        this.playerHP.changeHealth(pokes[0].getHealthCurrent());
-        this.playerHP.lowerHealthBar();
-        this.computerHP.changeHealth(pokes[1].getHealthCurrent());
-        this.computerHP.lowerHealthBar();
+        this.playerHP.setHP(pokes[0].getHealthCurrent());
+        this.computerHP.setHP(pokes[1].getHealthCurrent());
+    
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
     } 

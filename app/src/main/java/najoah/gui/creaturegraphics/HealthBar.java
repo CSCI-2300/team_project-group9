@@ -21,12 +21,23 @@ public class HealthBar extends JPanel
     private int xOfTotal = 0;
     private int yOfTotal = 0;
 
-    private JLabel textBar;
+    private JLabel textHP;
+    private JLabel owner;
 
-    public HealthBar()
+    public HealthBar(String owner,int HP)
     {
         this.setLayout(null);
+
+        //creating text for labels
+        this.owner = new JLabel(owner);
+        this.textHP = new JLabel(""+HP+"/"+HP);
+        this.owner.setBounds(20,-3,70,30);
+        this.textHP.setBounds(22,20,60,10);
+
         pane = new JLayeredPane();
+
+
+        //making labels to prevent crash
         healthBarGreenLabel = new JLabel();
         healthBarTotalLabel = new JLabel();
 
@@ -60,16 +71,20 @@ public class HealthBar extends JPanel
         the green bar will be fit to the position of the total bar
         and there will be a method to shrink the green bar to fit with a ratio of the health of the pokemon
         */
+       //adding health gui
         pane.setBounds(0,0,128,180);
         pane.add(healthBarTotalLabel,1);
         pane.add(healthBarGreenLabel,0);
-        //pane.add(textBar,0);
+
+        //adding health and name labels
+        pane.add(this.textHP,0);
+        pane.add(this.owner,0);
 
         this.add(pane);
         this.setOpaque(false);
     }
 
-    public void changeHealth(int health)
+    public void setHP(int health)
     {
        // healthBarTotalLabel.setBounds(xOfTotal,yOfTotal,/*THIS IS WHAT U REDUCE TO DECREASE BAR*/,48);
         //yet to be implemented, adjust length and bounds of greenlabel

@@ -1,5 +1,7 @@
 package najoah.gui;
 
+import najoah.gui.creaturegraphics.*;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -17,59 +19,34 @@ then throw all of it into one panel
 
 public class HealthBarPanel extends JPanel
 {   
-    private int currentHP;
-    private int maxHP = 50;
-    private JLabel textBar;
-    private JPanel visualBar;
-    private JLabel owner;
-    private BufferedImage pkmonImage;
-    private JLabel pkmonLabel;
 
-    public HealthBarPanel(String owner,int currentHP)
+    private HealthBar healthBar;
+    private PokemonPanel pkmon;
+
+    public HealthBarPanel(String owner,int MaxHP)
     {
-        this.currentHP = currentHP;
-        this.owner = new JLabel(owner);
-        
-        textBar = new JLabel(currentHP+"/"+maxHP);
-        visualBar = new JPanel();
-        pkmonLabel = new JLabel();
-        InputStream input = getClass().getClassLoader().getResourceAsStream("Gradle Bug.png");
-        try
-        {
-            pkmonImage = ImageIO.read(input);
-            pkmonLabel.setIcon(new ImageIcon(new ImageIcon(pkmonImage).getImage().getScaledInstance(128,128, Image.SCALE_DEFAULT)));
-        }
-        catch(Exception e){}
+        pkmon = new PokemonPanel();
+        healthBar = new HealthBar(owner,MaxHP);
 
-        visualBar.setBackground(Color.RED);
-        visualBar.setPreferredSize(new Dimension(50,15));
-        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        this.setLayout(null);
+        this.setPreferredSize(new Dimension(180,256));
 
-        this.owner.setOpaque(true);
-        textBar.setOpaque(true);
-        visualBar.setOpaque(true);
+        pkmon.setBounds(0,48,128,128);
+        healthBar.setBounds(0,0,128,48);
+
+        this.add(healthBar);
+        this.add(pkmon);
 
         this.setOpaque(false);
-
-        this.add(this.owner);
-        this.add(textBar);
-        this.add(visualBar);
-        this.add(pkmonLabel);
-
         
     }
 
-    public void changeHealth(int currentHP)
+    public void setHP(int currentHP)
     {   
         if(currentHP >= 0)
-            this.currentHP = currentHP;
+            healthBar.setHP(currentHP);
         else
-            this.currentHP = 0;
-        textBar.setText(this.currentHP+"/"+this.maxHP);
+            healthBar.setHP(0);
     }
 
-    public void lowerHealthBar()
-    {
-        visualBar.setPreferredSize(new Dimension(this.currentHP,15));
-    }
 }
