@@ -41,12 +41,12 @@ public class HealthBarPanel extends JPanel
         
     }
 
-    public void setHP(int currentHP)
+    public void setHP(int currentHP,int MaxHP)
     {   
         if(currentHP >= 0)
-            healthBar.setHP(currentHP);
+            healthBar.setHP(currentHP,MaxHP);
         else
-            healthBar.setHP(0);
+            healthBar.setHP(0,MaxHP);
     }
 
 }

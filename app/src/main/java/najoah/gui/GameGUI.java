@@ -152,8 +152,8 @@ public class GameGUI implements ActionListener
     public void update()
     {
         Pokemon[] pokes = model.getPokemon();
-        this.playerHP.setHP(pokes[0].getHealthCurrent());
-        this.computerHP.setHP(pokes[1].getHealthCurrent());
+        this.playerHP.setHP(pokes[0].getHealthCurrent(),pokes[0].getHealthMax());
+        this.computerHP.setHP(pokes[1].getHealthCurrent(),pokes[1].getHealthMax());
     
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
