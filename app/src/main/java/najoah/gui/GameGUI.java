@@ -31,6 +31,10 @@ public class GameGUI implements ActionListener
     private BufferedImage forestImage;
     private JLabel forestLabel;
 
+    private boolean winnerDeclared = false;
+    private boolean userWinner = false;
+    private boolean comWinner = false;
+
     /*########################################3
     we need to redo a bit of this, 
     one, make a background class that can create the image and load it to a layered panel
@@ -147,6 +151,7 @@ public class GameGUI implements ActionListener
 
         //tell controller about selected move
         this.controller.playTurn(move);
+
     }
 
     public void update()
@@ -157,6 +162,39 @@ public class GameGUI implements ActionListener
     
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
-    } 
 
+        // changes the label based on the winner of the game
+        if (!winnerDeclared)
+        {
+            if (pokes[0].getHealthCurrent() <= 0 && pokes[1].getHealthCurrent() >= 0)
+            {
+                this.moveLabel.setText("\n The game is over, the computer has won.");
+                winnerDeclared = true;
+                comWinner = true;
+                System.out.println("comWinner " + comWinner);
+            }
+            else if (pokes[1].getHealthCurrent() <= 0 && pokes[0].getHealthCurrent() >= 0)
+            {
+                this.moveLabel.setText("\n The game is over, the player has won.");
+                winnerDeclared = true;
+                userWinner = true;
+                System.out.println("userWinner " + userWinner);
+            }
+            }
+            System.out.println(winnerDeclared);
+
+            // this keeps the label message the same after a Winner is declared
+            // if this was not here it would show moves with more button clicks.
+        if (winnerDeclared)
+        {
+           if (comWinner)
+           {
+            this.moveLabel.setText("\n The game is over, the computer has won.");
+           }
+           else if (userWinner)
+           {
+            this.moveLabel.setText("\n The game is over, the player has won.");
+           }
+        }
+    }
 }
