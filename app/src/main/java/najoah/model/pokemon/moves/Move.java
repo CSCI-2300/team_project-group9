@@ -28,3 +28,38 @@ public class Move
     }
     
 }
+
+// Below is what I assume you were meaning for a struct? This is how I found to do it.
+// I haven't worked with structs before but you can take a look and use it or delete it idc.
+
+/* public class Move {
+    private String name;
+    private int dmg;
+    private boolean isSpecial;
+
+    // Constructor for attack moves
+    public Move(String name, int dmg, boolean isSpecial) {
+        this.name = name;
+        this.dmg = dmg;
+        this.isSpecial = isSpecial;
+    }
+
+    // Constructor for block moves
+    public Move(String name) {
+        this.name = name;
+        this.dmg = 0;
+        this.isSpecial = false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDmg() {
+        return dmg;
+    }
+
+    public boolean getIsSpecial() {
+        return isSpecial;
+    }
+} */
