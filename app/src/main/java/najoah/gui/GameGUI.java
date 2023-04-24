@@ -19,6 +19,9 @@ public class GameGUI implements ActionListener
 {
     private JFrame mainFrame;
     private JPanel mainPanel;
+    private JPanel bottomPanel;
+    private JPanel topPanel;
+
     private JLabel moveLabel;
     private ImageIcon pikachu;
     private Controller controller;
@@ -83,8 +86,8 @@ public class GameGUI implements ActionListener
         mainPanel.setLayout(new BorderLayout());
 
         //making the two panels top and bottum
-        JPanel bottomPanel = new JPanel();
-        JPanel topPanel = new JPanel();
+        bottomPanel = new JPanel();
+        topPanel = new JPanel();
         topPanel.setLayout(null);
 
         topPanel.setPreferredSize(new Dimension(800,300));
@@ -134,7 +137,6 @@ public class GameGUI implements ActionListener
 
         mainPanel.add(topPanel, BorderLayout.CENTER);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-        //mainPanel.add(screen);
         mainFrame.add(mainPanel);
         mainFrame.pack();
         mainFrame.setVisible(true);
@@ -164,37 +166,19 @@ public class GameGUI implements ActionListener
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
 
         // changes the label based on the winner of the game
-        if (!winnerDeclared)
+        if (pokes[0].getHealthCurrent() <= 0 && pokes[1].getHealthCurrent() >= 0)
         {
-            if (pokes[0].getHealthCurrent() <= 0 && pokes[1].getHealthCurrent() >= 0)
-            {
-                this.moveLabel.setText("\n The game is over, the computer has won.");
-                winnerDeclared = true;
-                comWinner = true;
-                System.out.println("comWinner " + comWinner);
-            }
-            else if (pokes[1].getHealthCurrent() <= 0 && pokes[0].getHealthCurrent() >= 0)
-            {
-                this.moveLabel.setText("\n The game is over, the player has won.");
-                winnerDeclared = true;
-                userWinner = true;
-                System.out.println("userWinner " + userWinner);
-            }
-            }
-            System.out.println(winnerDeclared);
-
-            // this keeps the label message the same after a Winner is declared
-            // if this was not here it would show moves with more button clicks.
-        if (winnerDeclared)
+            GameOverScreen gameOverPanel = new GameOverScreen(false);
+            topPanel.setVisible(false);
+            bottomPanel.setVisible(false);
+            mainPanel.add(gameOverPanel);
+        }
+        else if (pokes[1].getHealthCurrent() <= 0 && pokes[0].getHealthCurrent() >= 0)
         {
-           if (comWinner)
-           {
-            this.moveLabel.setText("\n The game is over, the computer has won.");
-           }
-           else if (userWinner)
-           {
-            this.moveLabel.setText("\n The game is over, the player has won.");
-           }
+            GameOverScreen gameOverPanel = new GameOverScreen(true);
+            topPanel.setVisible(false);
+            bottomPanel.setVisible(false);
+            mainPanel.add(gameOverPanel);
         }
     }
 }
