@@ -28,6 +28,8 @@ public class GameGUI implements ActionListener
     private Model model;
     private HealthBarPanel playerHP;
     private HealthBarPanel computerHP;
+    private EnergyBar playerEnergy;
+    private EnergyBar computerEnergy;
 
     private JLayeredPane layering;
 
@@ -117,14 +119,20 @@ public class GameGUI implements ActionListener
         
         this.computerHP = new HealthBarPanel("Computer", 50);
 
-        
+        //making energy bar
+        this.playerEnergy = new EnergyBar(50);
+        this.computerEnergy = new EnergyBar(50);
 
         //this can be relatively hardcoded, or we can set this too be scaled as aratio off of main panel size/frame
         playerHP.setBounds(70,40,150,176);
         computerHP.setBounds(600,40,150,176);
+        playerEnergy.setBounds(70,215,150,176);
+        computerEnergy.setBounds(600,215,150,176);
         layering.add(forestLabel,0);
         layering.add(playerHP,0);
         layering.add(computerHP,0);
+        layering.add(playerEnergy,0);
+        layering.add(computerEnergy,0);
        
         topPanel.add(layering);
 
