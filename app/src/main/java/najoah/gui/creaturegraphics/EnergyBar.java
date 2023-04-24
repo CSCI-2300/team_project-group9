@@ -31,7 +31,7 @@ public class EnergyBar extends JPanel
         //creating text for labels
         this.textEnergy = new JLabel(""+energy+"/"+energy);
 
-        this.textEnergy.setBounds(60,5,60,10);
+        this.textEnergy.setBounds(60,10,60,10);
         pane = new JLayeredPane();
 
 
@@ -49,15 +49,15 @@ public class EnergyBar extends JPanel
         }
         catch(Exception e){}
 
-        //importing the green bar
-        //input = getClass().getClassLoader().getResourceAsStream("GreenHealth.png");
-        //try
-        //{
-            //healthBarGreen = ImageIO.read(input);
-            //healthBarGreenLabel.setIcon(new ImageIcon(new ImageIcon(healthBarGreen).getImage().getScaledInstance(128,48, Image.SCALE_DEFAULT)));
-            //healthBarGreenLabel.setBounds(xOfTotal-7,(yOfTotal+4),128,48);
-        //}
-        //catch(Exception e){}
+        //importing the blue bar
+        input = getClass().getClassLoader().getResourceAsStream("Energy.png");
+        try
+        {
+            energyBarBlue = ImageIO.read(input);
+            energyBarBlueLabel.setIcon(new ImageIcon(new ImageIcon(energyBarBlue).getImage().getScaledInstance(128,48, Image.SCALE_DEFAULT)));
+            energyBarBlueLabel.setBounds(xOfTotal+1,(yOfTotal-2),128,48);
+        }
+        catch(Exception e){}
 
 
         //creating health to store on the bar and edit
@@ -69,10 +69,10 @@ public class EnergyBar extends JPanel
         the green bar will be fit to the position of the total bar
         and there will be a method to shrink the green bar to fit with a ratio of the health of the pokemon
         */
-       //adding health gui
+       //adding energy gui
         pane.setBounds(0,0,148,180);
         pane.add(energyBarTotalLabel,1);
-        //pane.add(healthBarGreenLabel,0);
+        pane.add(energyBarBlueLabel,0);
 
         //adding health and name labels
         pane.add(this.textEnergy,0);
@@ -86,7 +86,7 @@ public class EnergyBar extends JPanel
         float max = maxEnergy;
         float current = currentEnergy;
 
-        //energyBarBlueLabel.setBounds(xOfTotal-7,yOfTotal+4,Math.round(121.0f*(current/max))+7,48);
+        energyBarBlueLabel.setBounds(xOfTotal+1,yOfTotal-2,Math.round(121.0f*(current/max))+7,48);
         textEnergy.setText(currentEnergy+"/"+maxEnergy);
         //yet to be implemented, adjust length and bounds of greenlabel
     }
