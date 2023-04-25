@@ -114,6 +114,10 @@ public class GameGUI implements ActionListener
         block.setPreferredSize(new Dimension(150,25));
         block.addActionListener(this);
 
+        JButton catchButton = new JButton("Catch");
+        catchButton.setPreferredSize(new Dimension(150,25));
+        catchButton.addActionListener(this);
+
         //making seperate pokemon panels
         this.playerHP = new HealthBarPanel("Player", 50);
         
@@ -126,8 +130,8 @@ public class GameGUI implements ActionListener
         //this can be relatively hardcoded, or we can set this too be scaled as aratio off of main panel size/frame
         playerHP.setBounds(70,40,150,176);
         computerHP.setBounds(600,40,150,176);
-        playerEnergy.setBounds(70,215,150,100);
-        computerEnergy.setBounds(600,215,150,100);
+        playerEnergy.setBounds(70,210,150,100);
+        computerEnergy.setBounds(600,210,150,100);
         layering.add(forestLabel,0);
         layering.add(playerHP,0);
         layering.add(computerHP,0);
@@ -140,6 +144,7 @@ public class GameGUI implements ActionListener
         bottomPanel.add(basic);
         bottomPanel.add(special);
         bottomPanel.add(block);
+        bottomPanel.add(catchButton);
         bottomPanel.add(moveLabel);
        
 
@@ -169,7 +174,7 @@ public class GameGUI implements ActionListener
         Pokemon[] pokes = model.getPokemon();
         this.playerHP.setHP(pokes[0].getHealthCurrent(),pokes[0].getHealthMax());
         this.computerHP.setHP(pokes[1].getHealthCurrent(),pokes[1].getHealthMax());
-        this.playerEnergy.setEnergy(45,50);
+        this.playerEnergy.setEnergy(25,50);
     
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");

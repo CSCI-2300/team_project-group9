@@ -55,14 +55,9 @@ public class EnergyBar extends JPanel
         {
             energyBarBlue = ImageIO.read(input);
             energyBarBlueLabel.setIcon(new ImageIcon(new ImageIcon(energyBarBlue).getImage().getScaledInstance(128,48, Image.SCALE_DEFAULT)));
-            energyBarBlueLabel.setBounds(xOfTotal+1,(yOfTotal-2),128,48);
+            energyBarBlueLabel.setBounds(xOfTotal,(yOfTotal),128,48);
         }
         catch(Exception e){}
-
-
-        //creating health to store on the bar and edit
-        //textBar = new JLabel("50/50");
-       // textBar.setBounds(xOfTotal+30,yOfTotal-30,50,50);
 
         /* 
         now they shall both be added to a layered pane,
@@ -74,7 +69,6 @@ public class EnergyBar extends JPanel
         pane.add(energyBarTotalLabel,1);
         pane.add(energyBarBlueLabel,0);
 
-        //adding health and name labels
         pane.add(this.textEnergy,0);
 
         this.add(pane);
@@ -86,9 +80,8 @@ public class EnergyBar extends JPanel
         float max = maxEnergy;
         float current = currentEnergy;
 
-        energyBarBlueLabel.setBounds(xOfTotal+1,yOfTotal-2,Math.round(121.0f*(current/max))+7,48);
+        energyBarBlueLabel.setBounds(xOfTotal,yOfTotal,Math.round(121.0f*(current/max)+7),48);
         textEnergy.setText(currentEnergy+"/"+maxEnergy);
-        //yet to be implemented, adjust length and bounds of greenlabel
     }
 
 }
