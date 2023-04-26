@@ -16,6 +16,7 @@ public class Model
     private ComputerAI com;
     private User user;
     private MoveAlgorithm moveMagic;
+    private CatchAlgorithm catchMagic;
     private GameGUI gui;
     private String winner;
 
@@ -23,16 +24,23 @@ public class Model
     {
         com = new ComputerAI();
         moveMagic = new MoveAlgorithm();
+        catchMagic = new CatchAlgorithm();
         user = new User();
         
     }
 
     public void turn(String move)
     {
+        if (move == "Catch")
+        {
+            catchMagic.attemptCatch(user,com);
+        }
+        else
+        {
         this.userTurn(move);
         com.nextMove();
         moveMagic.bustAMove(user.getPokemon(),com.getPokemon());
-
+        }
     }
 
     private void userTurn(String move)
