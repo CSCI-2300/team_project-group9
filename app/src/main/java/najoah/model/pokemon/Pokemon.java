@@ -14,8 +14,8 @@ public class Pokemon
 {   
 
     //this is all the standard rn
-    AttackMove basic;
-    AttackMove special;
+    Move basic;
+    Move special;
     Move block;
     int healthMax;
     int healthCurrent;
@@ -27,11 +27,11 @@ public class Pokemon
     {
         healthMax = 50;
         healthCurrent = healthMax;
-        basic = new AttackMove("Basic Attack",dmg,false);
+        basic = new Move("Basic Attack",dmg);
         basic.setDmg(6);
-        special = new AttackMove("Special Attack",dmg,true);
+        special = new Move("Special Attack",dmg);
         special.setDmg(4);
-        block = new BlockMove("Block",dmg);
+        block = new Move("Block",0);
         selected = basic;
     }
 

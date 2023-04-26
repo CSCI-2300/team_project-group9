@@ -20,8 +20,11 @@ public class MoveAlgorithm
     //this will change the values of health and etc. based on math for moves
     public void bustAMove(Pokemon user, Pokemon com)
     {
-        boolean userisAttack = user.getMove() instanceof AttackMove;
-        boolean comisAttack = com.getMove() instanceof AttackMove;
+        boolean userisAttack = user.getMove().getName().equals("Basic Attack") 
+        || user.getMove().getName().equals("Special Attack");
+
+        boolean comisAttack = com.getMove().getName().equals("Basic Attack") 
+        || com.getMove().getName().equals("Special Attack");
         System.out.println(user.getMove().getName()+ " " + com.getMove().getName());
         //this is where code for type checks, dmg calculations and edits of health
         //gating if both are blocks
@@ -57,7 +60,9 @@ public class MoveAlgorithm
     private void attacked(Pokemon attacker, Pokemon defender)
     {
         //if non special 
-        if(attacker.getMove().getIsSpecial())
+
+        // Joe: ^ shouldn't this below conditional before special move because it's doubling the damage?
+        if(attacker.getMove().getName().equals("Special Attack"))
         {
             defender.adjustHealth(attacker.getMove().getDmg()*2);
             return;
