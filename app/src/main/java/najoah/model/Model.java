@@ -43,7 +43,7 @@ public class Model
             
             if(user.getPokemon().getHealthCurrent() <= 0)
             {
-                if(!user.swapPokemon())
+                if(!user.switchPokemon())
                 {
                     //add game ending here
                 }
