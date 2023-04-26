@@ -113,9 +113,9 @@ public class GameGUI implements ActionListener
         catchButton.addActionListener(this);
 
         //making seperate pokemon panels
-        this.playerPanel = new HealthBarPanel("Player", 50);
+        this.playerPanel = new HealthBarPanel("Player", model.getPokemon()[0].getHealthMax(),model.getPokemon()[0].getEnergyMax());
         
-        this.compPanel = new HealthBarPanel("Computer", 50);
+        this.compPanel = new HealthBarPanel("Computer", model.getPokemon()[1].getHealthMax(),model.getPokemon()[1].getEnergyMax());
 
         //making energy bar
         //this can be relatively hardcoded, or we can set this too be scaled as aratio off of main panel size/frame
@@ -182,7 +182,7 @@ public class GameGUI implements ActionListener
             bottomPanel.setVisible(false);
             mainPanel.add(gameOverPanel);
         }
-        else if (pokes[1].getHealthCurrent() <= 0 && pokes[0].getHealthCurrent() >= 0)
+        else
         {
             GameOverScreen gameOverPanel = new GameOverScreen(true);
             topPanel.setVisible(false);

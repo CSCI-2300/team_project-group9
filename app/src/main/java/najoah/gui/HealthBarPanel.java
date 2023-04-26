@@ -24,11 +24,11 @@ public class HealthBarPanel extends JPanel
     private PokemonPanel pkmon;
     private EnergyBar energyBar;
 
-    public HealthBarPanel(String owner,int MaxHP)
+    public HealthBarPanel(String owner,int MaxHP, int maxEnergy)
     {
         pkmon = new PokemonPanel();
         healthBar = new HealthBar(owner,MaxHP);
-        energyBar = new EnergyBar(50);
+        energyBar = new EnergyBar(maxEnergy);
 
         this.setLayout(null);
         this.setPreferredSize(new Dimension(180,400));

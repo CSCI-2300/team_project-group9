@@ -57,37 +57,21 @@ public class User {
         pokemons.add(pokemon);
     }
 
-    public Vector<Pokemon> getPokemons()
+    private void setNewPokemon()
     {
-        return pokemons;
+        this.pokemon = pokemons.get(0);
     }
 
     //Method to switch pokemon if user loses current pokemon
-    public void switchPokemon()
+    public boolean switchPokemon()
     {
-        String noMorePoke = "No more pokemon";
-        if (!pokemons.isEmpty())
-        {
-            pokemons.remove(0);
-
-            if (!pokemons.isEmpty())
-            {
-               pokemons.get(0);
-            }
-            else 
-            {
-               emptyPokemon(noMorePoke);
-            }
+        pokemons.remove(0);
+        if(pokemons.isEmpty()){
+            return false;
         }
-        else
-        {
-            emptyPokemon(noMorePoke);
-        }
-    }
+        this.setNewPokemon();
+        return true;
 
-    public String emptyPokemon(String noMorePoke)
-    {
-        return noMorePoke;
     }
 
 }

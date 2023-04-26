@@ -28,12 +28,12 @@ public class Pokemon
 
     public Pokemon()
     {
-        energyCurrent = 50;
+        energyCurrent = 20;
         energyMax = energyCurrent;
 
         healthMax = 50;
         healthCurrent = healthMax;
-        
+
         basic = new Move("Basic Attack",6);
         special = new Move("Special Attack",4);
         block = new Move("Block",0);
@@ -64,7 +64,12 @@ public class Pokemon
     {
         this.healthCurrent -= delta;
     }
-    
+
+    public void adjustEnergy(int delta)
+    {
+        this.energyCurrent -= delta;
+    }
+
     public Move getMove()
     {
         return selected;

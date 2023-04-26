@@ -40,6 +40,20 @@ public class Model
         this.userTurn(move);
         com.nextMove();
         moveMagic.bustAMove(user.getPokemon(),com.getPokemon());
+        if(user.getPokemon().getHealthCurrent() <= 0)
+        {
+            if(!user.swapPokemon())
+            {
+                //add game ending here
+            }
+
+        }
+
+        if(com.getPokemon().getHealthCurrent() <= 0)
+        {
+            //gen new comp here, reset our health
+
+        }
         }
     }
 

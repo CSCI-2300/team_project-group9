@@ -25,11 +25,54 @@ public class MoveAlgorithm
 
         boolean comisAttack = com.getMove().getName().equals("Basic Attack") 
         || com.getMove().getName().equals("Special Attack");
+
+
+
+        //removing energy or health for com and user based on move chosen
+        switch(com.getMove().getName())
+        {
+            case "Basic Attack":
+                com.adjustEnergy(4);
+                if(com.getEnergyCurrent() < 0){com.adjustHealth(4);}
+                break;
+
+            case "Special Attack":
+                com.adjustEnergy(4);
+                if(com.getEnergyCurrent() < 0){com.adjustHealth(6);}
+                break;
+
+                
+            case "Block":
+                com.adjustEnergy(3);
+                if(com.getEnergyCurrent() < 0){com.adjustHealth(3);}
+                break;
+        }
+
+        switch(user.getMove().getName())
+        {
+            case "Basic Attack":
+                user.adjustEnergy(4);
+                if(user.getEnergyCurrent() < 0){user.adjustHealth(4);}
+                break;
+
+            case "Special Attack":
+                user.adjustEnergy(4);
+                if(user.getEnergyCurrent() < 0){user.adjustHealth(6);}
+                break;
+
+                
+            case "Block":
+                user.adjustEnergy(3);
+                if(user.getEnergyCurrent() < 0){user.adjustHealth(3);}
+                break;
+        }
+
         System.out.println(user.getMove().getName()+ " " + com.getMove().getName());
         //this is where code for type checks, dmg calculations and edits of health
         //gating if both are blocks
         if(comisAttack && userisAttack)
         {
+
             //if neither are blocks
             com.adjustHealth(user.getMove().getDmg());
             if(com.getHealthCurrent() <= 0)
