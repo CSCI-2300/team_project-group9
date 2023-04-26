@@ -37,23 +37,24 @@ public class Model
         }
         else
         {
-        this.userTurn(move);
-        com.nextMove();
-        moveMagic.bustAMove(user.getPokemon(),com.getPokemon());
-        if(user.getPokemon().getHealthCurrent() <= 0)
-        {
-            if(!user.swapPokemon())
+            this.userTurn(move);
+            com.nextMove();
+            moveMagic.bustAMove(user.getPokemon(),com.getPokemon());
+            
+            if(user.getPokemon().getHealthCurrent() <= 0)
             {
-                //add game ending here
+                if(!user.swapPokemon())
+                {
+                    //add game ending here
+                }
+
             }
 
-        }
+            if(com.getPokemon().getHealthCurrent() <= 0)
+            {
+                //gen new comp here, reset our health
 
-        if(com.getPokemon().getHealthCurrent() <= 0)
-        {
-            //gen new comp here, reset our health
-
-        }
+            }
         }
     }
 
