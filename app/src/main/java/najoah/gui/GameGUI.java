@@ -23,7 +23,6 @@ public class GameGUI implements ActionListener
     private JPanel topPanel;
 
     private JLabel moveLabel;
-    private ImageIcon pikachu;
     private Controller controller;
     private Model model;
     private HealthBarPanel playerHP;
@@ -31,14 +30,11 @@ public class GameGUI implements ActionListener
     private EnergyBar playerEnergy;
     private EnergyBar computerEnergy;
 
-    private JLayeredPane layering;
+    private Pokemon []pokes;
 
+    private JLayeredPane layering;
     private BufferedImage forestImage;
     private JLabel forestLabel;
-
-    private boolean winnerDeclared = false;
-    private boolean userWinner = false;
-    private boolean comWinner = false;
 
     /*########################################3
     we need to redo a bit of this, 
@@ -171,7 +167,7 @@ public class GameGUI implements ActionListener
 
     public void update()
     {
-        Pokemon[] pokes = model.getPokemon();
+        pokes = model.getPokemon();
         this.playerHP.setHP(pokes[0].getHealthCurrent(),pokes[0].getHealthMax());
         this.computerHP.setHP(pokes[1].getHealthCurrent(),pokes[1].getHealthMax());
         this.playerEnergy.setEnergy(25,50);
@@ -180,6 +176,11 @@ public class GameGUI implements ActionListener
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
 
         // changes the label based on the winner of the game
+        checkWinner();
+    }
+
+    public void checkWinner()
+    {
         if (pokes[0].getHealthCurrent() <= 0 && pokes[1].getHealthCurrent() >= 0)
         {
             GameOverScreen gameOverPanel = new GameOverScreen(false);
@@ -196,3 +197,4 @@ public class GameGUI implements ActionListener
         }
     }
 }
+
