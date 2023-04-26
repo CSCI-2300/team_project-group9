@@ -18,7 +18,7 @@ public class Model
     private MoveAlgorithm moveMagic;
     private CatchAlgorithm catchMagic;
     private GameGUI gui;
-    private String winner;
+    private boolean loss;
 
     public Model()
     {
@@ -26,7 +26,7 @@ public class Model
         moveMagic = new MoveAlgorithm();
         catchMagic = new CatchAlgorithm();
         user = new User();
-        
+        loss = false;
     }
 
     public void turn(String move)
@@ -45,7 +45,7 @@ public class Model
             {
                 if(!user.switchPokemon())
                 {
-                    //add game ending here
+                    loss = true;
                 }
 
             }
@@ -93,6 +93,11 @@ public class Model
     public void register(GameGUI gui)
     {
         this.gui = gui;
+    }
+
+    public boolean gameStatus()
+    {
+        return loss;
     }
 }
 
