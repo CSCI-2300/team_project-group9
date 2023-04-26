@@ -9,9 +9,9 @@ public class AttackMove extends Move
     private int dmg;
     private boolean isSpecial;
 
-    public AttackMove(String name, boolean isSpecial)
+    public AttackMove(String name,int dmg, boolean isSpecial)
     {
-        super(name);
+        super(name,dmg);
         this.isSpecial = isSpecial;
         dmg = 6;
         

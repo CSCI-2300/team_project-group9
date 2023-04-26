@@ -5,11 +5,13 @@ package najoah.model.pokemon.moves;
 public class Move
 {
     protected String name;
+    int dmg;
 
     //move types can be "attack" or "block" --- made move 
-    public Move(String name)
+    public Move(String name, int dmg)
     {
-        this.name = name; 
+        this.name = name;
+        this.dmg = dmg; 
     }
 
     public String getName()

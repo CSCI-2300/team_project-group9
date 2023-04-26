@@ -19,6 +19,7 @@ public class Pokemon
     Move block;
     int healthMax;
     int healthCurrent;
+    int dmg;
     //this is to send the move selected to the model, to the move algorithm
     Move selected;
 
@@ -26,10 +27,11 @@ public class Pokemon
     {
         healthMax = 50;
         healthCurrent = healthMax;
-        basic = new AttackMove("Basic Attack",false);
-        special = new AttackMove("Special Attack",true);
+        basic = new AttackMove("Basic Attack",dmg,false);
+        basic.setDmg(6);
+        special = new AttackMove("Special Attack",dmg,true);
         special.setDmg(4);
-        block = new Move("Block");
+        block = new BlockMove("Block",dmg);
         selected = basic;
     }
 
