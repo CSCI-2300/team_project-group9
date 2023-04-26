@@ -162,8 +162,9 @@ public class GameGUI implements ActionListener
         pokes = model.getPokemon();
         this.playerPanel.setHP(pokes[0].getHealthCurrent(),pokes[0].getHealthMax());
         this.compPanel.setHP(pokes[1].getHealthCurrent(),pokes[1].getHealthMax());
-        this.playerPanel.setEnergy(25,50);
-        
+        this.playerPanel.setEnergy(pokes[0].getEnergyCurrent(),pokes[0].getEnergyMax());
+        this.compPanel.setEnergy(pokes[1].getEnergyCurrent(),pokes[1].getEnergyMax());
+
     
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");

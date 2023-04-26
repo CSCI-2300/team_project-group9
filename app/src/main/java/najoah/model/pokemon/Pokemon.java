@@ -17,20 +17,25 @@ public class Pokemon
     Move basic;
     Move special;
     Move block;
+
     int healthMax;
     int healthCurrent;
-    int dmg;
+
+    int energyCurrent;
+    int energyMax;
     //this is to send the move selected to the model, to the move algorithm
     Move selected;
 
     public Pokemon()
     {
+        energyCurrent = 50;
+        energyMax = energyCurrent;
+
         healthMax = 50;
         healthCurrent = healthMax;
-        basic = new Move("Basic Attack",dmg);
-        basic.setDmg(6);
-        special = new Move("Special Attack",dmg);
-        special.setDmg(4);
+        
+        basic = new Move("Basic Attack",6);
+        special = new Move("Special Attack",4);
         block = new Move("Block",0);
         selected = basic;
     }
@@ -63,6 +68,16 @@ public class Pokemon
     public Move getMove()
     {
         return selected;
+    }
+
+    public int getEnergyCurrent()
+    {
+        return this.energyCurrent;
+    }
+
+    public int getEnergyMax()
+    {
+        return this.energyMax;
     }
     
     public int getHealthMax()
