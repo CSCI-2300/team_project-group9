@@ -22,31 +22,43 @@ public class HealthBarPanel extends JPanel
 
     private HealthBar healthBar;
     private PokemonPanel pkmon;
+    private EnergyBar energyBar;
 
     public HealthBarPanel(String owner,int MaxHP)
     {
         pkmon = new PokemonPanel();
         healthBar = new HealthBar(owner,MaxHP);
+        energyBar = new EnergyBar(50);
 
         this.setLayout(null);
-        this.setPreferredSize(new Dimension(180,256));
+        this.setPreferredSize(new Dimension(180,400));
 
         pkmon.setBounds(0,48,128,128);
         healthBar.setBounds(0,0,128,48);
+        energyBar.setBounds(0,176,128,48);
 
         this.add(healthBar);
         this.add(pkmon);
+        this.add(energyBar);
 
         this.setOpaque(false);
         
     }
 
-    public void setHP(int currentHP,int MaxHP)
+    public void setHP(int currentHP,int maxHP)
     {   
         if(currentHP >= 0)
-            healthBar.setHP(currentHP,MaxHP);
+            healthBar.setHP(currentHP,maxHP);
         else
-            healthBar.setHP(0,MaxHP);
+            healthBar.setHP(0,maxHP);
+    }
+    
+    public void setEnergy(int currentEnergy, int maxEnergy)
+    {
+        if(currentEnergy >= 0)
+            energyBar.setEnergy(currentEnergy,maxEnergy);
+        else
+            energyBar.setEnergy(0,maxEnergy);
     }
 
 }

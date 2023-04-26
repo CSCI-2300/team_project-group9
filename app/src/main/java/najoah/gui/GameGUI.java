@@ -25,10 +25,8 @@ public class GameGUI implements ActionListener
     private JLabel moveLabel;
     private Controller controller;
     private Model model;
-    private HealthBarPanel playerHP;
-    private HealthBarPanel computerHP;
-    private EnergyBar playerEnergy;
-    private EnergyBar computerEnergy;
+    private HealthBarPanel playerPanel;
+    private HealthBarPanel compPanel;
 
     private Pokemon []pokes;
 
@@ -115,25 +113,19 @@ public class GameGUI implements ActionListener
         catchButton.addActionListener(this);
 
         //making seperate pokemon panels
-        this.playerHP = new HealthBarPanel("Player", 50);
+        this.playerPanel = new HealthBarPanel("Player", 50);
         
-        this.computerHP = new HealthBarPanel("Computer", 50);
+        this.compPanel = new HealthBarPanel("Computer", 50);
 
         //making energy bar
-        this.playerEnergy = new EnergyBar(50);
-        this.computerEnergy = new EnergyBar(50);
-
         //this can be relatively hardcoded, or we can set this too be scaled as aratio off of main panel size/frame
-        playerHP.setBounds(70,40,150,176);
-        computerHP.setBounds(600,40,150,176);
-        playerEnergy.setBounds(70,210,150,100);
-        computerEnergy.setBounds(600,210,150,100);
+        playerPanel.setBounds(70,30,150,230);
+        compPanel.setBounds(600,30,150,230);
+
         layering.add(forestLabel,0);
-        layering.add(playerHP,0);
-        layering.add(computerHP,0);
-        layering.add(playerEnergy,0);
-        layering.add(computerEnergy,0);
-       
+        layering.add(playerPanel,0);
+        layering.add(compPanel,0);
+    
         topPanel.add(layering);
 
         bottomPanel.add(moveLabel);
@@ -168,9 +160,10 @@ public class GameGUI implements ActionListener
     public void update()
     {
         pokes = model.getPokemon();
-        this.playerHP.setHP(pokes[0].getHealthCurrent(),pokes[0].getHealthMax());
-        this.computerHP.setHP(pokes[1].getHealthCurrent(),pokes[1].getHealthMax());
-        this.playerEnergy.setEnergy(25,50);
+        this.playerPanel.setHP(pokes[0].getHealthCurrent(),pokes[0].getHealthMax());
+        this.compPanel.setHP(pokes[1].getHealthCurrent(),pokes[1].getHealthMax());
+        this.playerPanel.setEnergy(25,50);
+        
     
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");

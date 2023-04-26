@@ -65,7 +65,7 @@ public class EnergyBar extends JPanel
         and there will be a method to shrink the green bar to fit with a ratio of the health of the pokemon
         */
        //adding energy gui
-        pane.setBounds(0,0,148,180);
+        pane.setBounds(0,0,129,50);
         pane.add(energyBarTotalLabel,1);
         pane.add(energyBarBlueLabel,0);
 
