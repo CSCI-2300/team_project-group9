@@ -33,13 +33,13 @@ public class Model
     {
         if (move == "Catch")
         {
-            catchMagic.attemptCatch(user,com);
+            catchMagic.attemptCatch(user, com);
         }
         else
         {
             this.userTurn(move);
             com.nextMove();
-            moveMagic.bustAMove(user.getPokemon(),com.getPokemon());
+            moveMagic.bustAMove(user.getPokemon(), com.getPokemon());
             
             if(user.getPokemon().getHealthCurrent() <= 0)
             {

@@ -170,7 +170,7 @@ public class GameGUI implements ActionListener
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
 
         // changes the label based on the winner of the game
-        checkWinner();
+        //checkWinner();
     }
 
     public void checkWinner()
