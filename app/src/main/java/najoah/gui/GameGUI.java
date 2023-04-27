@@ -168,23 +168,14 @@ public class GameGUI implements ActionListener
     
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
-
-        // changes the label based on the winner of the game
-        //checkWinner();
+        displayEndScreen(model.gameStatus());
     }
 
-    public void checkWinner()
+    public void displayEndScreen(boolean status)
     {
-        if (pokes[0].getHealthCurrent() <= 0 && pokes[1].getHealthCurrent() >= 0)
+        if (status)
         {
             GameOverScreen gameOverPanel = new GameOverScreen(false);
-            topPanel.setVisible(false);
-            bottomPanel.setVisible(false);
-            mainPanel.add(gameOverPanel);
-        }
-        else
-        {
-            GameOverScreen gameOverPanel = new GameOverScreen(true);
             topPanel.setVisible(false);
             bottomPanel.setVisible(false);
             mainPanel.add(gameOverPanel);
