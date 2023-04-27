@@ -14,6 +14,10 @@ public class Move
         this.dmg = dmg; 
     }
 
+    public void setName(String name)
+    {
+        this.name = name;
+    }
     public String getName()
     {
         return name;

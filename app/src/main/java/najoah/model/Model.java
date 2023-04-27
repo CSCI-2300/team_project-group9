@@ -31,9 +31,20 @@ public class Model
 
     public void turn(String move)
     {
-        if (move == "Catch")
+        if (move == "Catch" && user.getPokemon().getHealthCurrent() > 0)
         {
-            catchMagic.attemptCatch(user, com);
+            this.user.getPokemon().setMove("Catch",0);
+
+            if(!catchMagic.attemptCatch(user, com)){
+                this.user.getPokemon().adjustHealth(com.getPokemon().getMove().getDmg()+5);
+                this.com.nextMove();
+                return;
+            }
+            nextFight();
+            this.com.getPokemon().setMove("breakout but failed, and was captured",0);
+            this.user.win();
+            user.getPokemon().adjustHealth(-(user.getPokemon().getHealthMax()-user.getPokemon().getHealthCurrent()));
+            user.getPokemon().adjustEnergy(-(user.getPokemon().getEnergyMax()-user.getPokemon().getEnergyCurrent()));
         }
         else
         {
@@ -43,17 +54,21 @@ public class Model
             
             if(user.getPokemon().getHealthCurrent() <= 0)
             {
+                this.user.lose();
                 if(!user.switchPokemon())
                 {
-                    loss = true;
+                    this.loss = true;
                 }
-
+                return;
             }
 
             if(com.getPokemon().getHealthCurrent() <= 0)
             {
                 //gen new comp here, reset our health
-
+                this.user.getPokemon().setMove("finishing blow to the opponent",0);
+                nextFight();
+                this.com.getPokemon().setMove("good fight but lost",0);
+                this.user.win();
             }
         }
     }
@@ -78,6 +93,13 @@ public class Model
 
     }
 
+    private void nextFight()
+    {
+        user.getPokemon().adjustHealth(-(user.getPokemon().getHealthMax()-user.getPokemon().getHealthCurrent()));
+        user.getPokemon().adjustEnergy(-(user.getPokemon().getEnergyMax()-user.getPokemon().getEnergyCurrent()));
+        com.genNewPokemon();
+    }
+
     public Pokemon[] getPokemon()
     {
         Pokemon[] arr ={user.getPokemon(),com.getPokemon()};
@@ -99,5 +121,12 @@ public class Model
     {
         return loss;
     }
+
+    public int[] getWinLoss()
+    {
+        int[]arr ={user.getWins(), user.getLosses()};
+        return arr;
+    }
+
 }
 

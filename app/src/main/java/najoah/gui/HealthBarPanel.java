@@ -61,4 +61,9 @@ public class HealthBarPanel extends JPanel
             energyBar.setEnergy(0,maxEnergy);
     }
 
+    public void setOwner(String owner)
+    {
+        this.healthBar.setOwner(owner);
+    }
+
 }

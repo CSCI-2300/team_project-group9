@@ -113,9 +113,9 @@ public class GameGUI implements ActionListener
         catchButton.addActionListener(this);
 
         //making seperate pokemon panels
-        this.playerPanel = new HealthBarPanel("Player", model.getPokemon()[0].getHealthMax(),model.getPokemon()[0].getEnergyMax());
+        this.playerPanel = new HealthBarPanel(model.getPokemon()[0].getName(), model.getPokemon()[0].getHealthMax(),model.getPokemon()[0].getEnergyMax());
         
-        this.compPanel = new HealthBarPanel("Computer", model.getPokemon()[1].getHealthMax(),model.getPokemon()[1].getEnergyMax());
+        this.compPanel = new HealthBarPanel(model.getPokemon()[1].getName(), model.getPokemon()[1].getHealthMax(),model.getPokemon()[1].getEnergyMax());
 
         //making energy bar
         //this can be relatively hardcoded, or we can set this too be scaled as aratio off of main panel size/frame
@@ -162,20 +162,23 @@ public class GameGUI implements ActionListener
         pokes = model.getPokemon();
         this.playerPanel.setHP(pokes[0].getHealthCurrent(),pokes[0].getHealthMax());
         this.compPanel.setHP(pokes[1].getHealthCurrent(),pokes[1].getHealthMax());
+
         this.playerPanel.setEnergy(pokes[0].getEnergyCurrent(),pokes[0].getEnergyMax());
         this.compPanel.setEnergy(pokes[1].getEnergyCurrent(),pokes[1].getEnergyMax());
 
+        this.playerPanel.setOwner(model.getPokemon()[0].getName());
+        this.compPanel.setOwner(model.getPokemon()[1].getName());
     
-
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
-        displayEndScreen(model.gameStatus());
+
+        this.displayEndScreen(model.gameStatus());
     }
 
     public void displayEndScreen(boolean status)
     {
-        if (status)
+        if(status)
         {
-            GameOverScreen gameOverPanel = new GameOverScreen(false);
+            GameOverScreen gameOverPanel = new GameOverScreen(false, model.getWinLoss()[0], model.getWinLoss()[1]);
             topPanel.setVisible(false);
             bottomPanel.setVisible(false);
             mainPanel.add(gameOverPanel);

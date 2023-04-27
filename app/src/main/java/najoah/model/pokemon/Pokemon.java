@@ -12,6 +12,7 @@ the option can be made here
 */
 public class Pokemon
 {   
+    String name;
 
     //this is all the standard rn
     Move basic;
@@ -26,9 +27,11 @@ public class Pokemon
     //this is to send the move selected to the model, to the move algorithm
     Move selected;
 
-    public Pokemon()
+    public Pokemon(String name)
     {
-        energyCurrent = 20;
+        this.name = name;
+
+        energyCurrent = 10;
         energyMax = energyCurrent;
 
         healthMax = 50;
@@ -58,6 +61,11 @@ public class Pokemon
                 break;
         }
 
+    }
+
+    public void setMove(String type, int dmg)
+    {
+        this.selected = new Move(type,dmg);
     }
 
     public void adjustHealth(int delta)
@@ -95,6 +103,15 @@ public class Pokemon
         return this.healthCurrent;
     }
 
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
 } 
 
 

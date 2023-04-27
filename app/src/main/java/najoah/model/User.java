@@ -13,9 +13,10 @@ public class User {
     private Vector<Pokemon> pokemons;
     private int wins;
     private int losses;
-
+    private int i;
     public User() {
-        this.pokemon = new Pokemon();
+        i = 1;
+        this.pokemon = new Pokemon("User");
         this.pokemons = new Vector<>();
         this.wins = 0;
         this.losses = 0;
@@ -54,7 +55,9 @@ public class User {
     // Method here to add a pokemon to the vector
     public void addPokemon(Pokemon pokemon)
     {
+        pokemon.setName("User"+i);
         pokemons.add(pokemon);
+        i++;
     }
 
     private void setNewPokemon()
@@ -65,11 +68,14 @@ public class User {
     //Method to switch pokemon if user loses current pokemon
     public boolean switchPokemon()
     {
-        pokemons.remove(0);
         if(pokemons.isEmpty()){
             return false;
         }
+
         this.setNewPokemon();
+        pokemons.remove(0);
+        pokemon.adjustHealth(-(pokemon.getHealthMax()-pokemon.getHealthCurrent()));
+        pokemon.adjustEnergy(-(pokemon.getEnergyMax()-pokemon.getEnergyCurrent()));
         return true;
 
     }

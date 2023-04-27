@@ -32,7 +32,7 @@ public class HealthBar extends JPanel
         //creating text for labels
         this.owner = new JLabel(owner);
         this.textHP = new JLabel(""+HP+"/"+HP);
-        this.owner.setBounds(20,-3,70,30);
+        this.owner.setBounds(20,-3,80,30);
         this.textHP.setBounds(22,20,60,10);
 
         pane = new JLayeredPane();
@@ -93,6 +93,11 @@ public class HealthBar extends JPanel
         healthBarGreenLabel.setBounds(xOfTotal-7,yOfTotal+4,Math.round(121.0f*(current/max))+7,48);
         textHP.setText(currentHP+"/"+maxHP);
         //yet to be implemented, adjust length and bounds of greenlabel
+    }
+
+    public void setOwner(String owner)
+    {
+        this.owner.setText(owner);
     }
 
 }

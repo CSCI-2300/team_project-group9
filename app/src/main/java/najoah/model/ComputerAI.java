@@ -10,11 +10,11 @@ public class ComputerAI
 {
 
     private Pokemon pokemonCom;
-
+    private int i;
     public ComputerAI()
     {
-        
-        pokemonCom = new Pokemon();
+        i = 1;
+        pokemonCom = new Pokemon("Computer");
     }
 
     /** randomly selects the next move and returns it as a string. 
@@ -42,6 +42,11 @@ public class ComputerAI
 
     }
 
+    public void genNewPokemon()
+    {
+        this.pokemonCom = new Pokemon("Computer "+ i);
+        i++;
+    }
     //setting a new pokemon for Ai for next battle
     public void setPokemon(Pokemon newPoke)
     {

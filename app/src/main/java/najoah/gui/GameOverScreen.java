@@ -25,13 +25,13 @@ public class GameOverScreen extends JPanel
     private BufferedImage forestImage;
     private JLabel forestLabel;
 
-    public GameOverScreen(Boolean status)
+    public GameOverScreen(Boolean status,int wins,int losses)
     {
         this.status = status;
 
         this.playerWinLabel = new JLabel("Congratulations! You have won the match!");
         this.playerWinLabel.setFont(new Font("Verdana", Font.PLAIN, 30));
-        this.playerLossLabel = new JLabel("Sorry! You have lost the match.");
+        this.playerLossLabel = new JLabel("Sorry! You have lost the match."+" You won: "+wins+" battles"+" You Lost: "+losses+" battles");
         this.playerLossLabel.setFont(new Font("Verdana", Font.PLAIN, 30));
 
         this.playAgainButton = new JButton("Play Again");
