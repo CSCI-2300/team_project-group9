@@ -43,8 +43,7 @@ public class Model
             nextFight();
             this.com.getPokemon().setMove("breakout but failed, and was captured",0);
             this.user.win();
-            user.getPokemon().adjustHealth(-(user.getPokemon().getHealthMax()-user.getPokemon().getHealthCurrent()));
-            user.getPokemon().adjustEnergy(-(user.getPokemon().getEnergyMax()-user.getPokemon().getEnergyCurrent()));
+            
         }
         else
         {
