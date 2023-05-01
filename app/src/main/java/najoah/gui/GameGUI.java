@@ -169,7 +169,7 @@ public class GameGUI implements ActionListener
         this.playerPanel.setOwner(model.getPokemon()[0].getName());
         this.compPanel.setOwner(model.getPokemon()[1].getName());
     
-        this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+". The computer perfomed a "+pokes[1].getMove().getName()+".");
+        this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+"."+" The computer perfomed a "+pokes[1].getMove().getName()+".");
 
         this.displayEndScreen(model.gameStatus());
     }

@@ -30,9 +30,9 @@ public class GameOverScreen extends JPanel
         this.status = status;
 
         this.playerWinLabel = new JLabel("Congratulations! You have won the match!");
-        this.playerWinLabel.setFont(new Font("Verdana", Font.PLAIN, 30));
+        this.playerWinLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
         this.playerLossLabel = new JLabel("Sorry! You have lost the match."+" You won: "+wins+" battles"+" You Lost: "+losses+" battles");
-        this.playerLossLabel.setFont(new Font("Verdana", Font.PLAIN, 30));
+        this.playerLossLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
 
         this.playAgainButton = new JButton("Play Again");
         this.playAgainButton.setPreferredSize(new Dimension(150,75));
