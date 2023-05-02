@@ -21,6 +21,8 @@ public class GameGUI implements ActionListener
     private JPanel mainPanel;
     private JPanel bottomPanel;
     private JPanel topPanel;
+    private JPanel helpPanel;
+    private StartScreen startScreen;
 
     private JLabel moveLabel;
     private Controller controller;
@@ -135,9 +137,11 @@ public class GameGUI implements ActionListener
         bottomPanel.add(catchButton);
         bottomPanel.add(moveLabel);
        
+        startScreen = new StartScreen(this);
 
-        mainPanel.add(topPanel, BorderLayout.CENTER);
-        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        //mainPanel.add(topPanel, BorderLayout.CENTER);
+        //mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        mainPanel.add(startScreen);
         mainFrame.add(mainPanel);
         mainFrame.pack();
         mainFrame.setVisible(true);
@@ -150,11 +154,16 @@ public class GameGUI implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         JButton button = (JButton)e.getSource();
-        String move = button.getText();
-
+        String input = button.getText();
+        if (input == "New Game" || input == "Continue" || input == "Help" || input == "Back")
+        {
+            startScreenLogic(input);
+        }
+        else
+        {
         //tell controller about selected move
-        this.controller.playTurn(move);
-
+        this.controller.playTurn(input);
+        }
     }
 
     public void update()
@@ -182,6 +191,37 @@ public class GameGUI implements ActionListener
             topPanel.setVisible(false);
             bottomPanel.setVisible(false);
             mainPanel.add(gameOverPanel);
+        }
+    }
+
+    public void startScreenLogic(String input)
+    {
+        if (input == "New Game")
+        {
+            startScreen.setVisible(false);
+            mainPanel.add(topPanel, BorderLayout.CENTER);
+            mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        }
+
+        //have to implement continue 
+
+        if (input == "Help")
+        {
+            startScreen.setVisible(false);
+            helpPanel = new JPanel();
+            //Noah you can input help info in below label
+            JLabel helpLabel = new JLabel("Input Help here");
+            JButton backButton = new JButton("Back");
+            backButton.addActionListener(this);
+            helpPanel.add(helpLabel);
+            helpPanel.add(backButton);
+            mainPanel.add(helpPanel);
+        }
+
+        if (input == "Back")
+        {
+            helpPanel.setVisible(false);
+            startScreen.setVisible(true);
         }
     }
 }
