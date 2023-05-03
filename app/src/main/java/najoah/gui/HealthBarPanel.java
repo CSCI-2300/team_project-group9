@@ -47,8 +47,11 @@ public class HealthBarPanel extends JPanel
     public void setType(int type)
     {
         this.pkmon.setType(type);
+        
+        pkmon.setBounds(0,48,128,128);
         if(type == 3)
             pkmon.setBounds(20,80,128,128);
+        
     }
 
     public void setHP(int currentHP,int maxHP)

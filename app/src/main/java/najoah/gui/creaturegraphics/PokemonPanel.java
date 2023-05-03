@@ -37,15 +37,24 @@ public class PokemonPanel extends JPanel
     public void setType(int type)
     {
         switch(type){
+            case 0:
+                input = getClass().getClassLoader().getResourceAsStream("creepy.png");
+                break;
             case 1:
                 input = getClass().getClassLoader().getResourceAsStream("Gradle Bug.png");
                 break;
-
             case 2:
                 input = getClass().getClassLoader().getResourceAsStream("sassquatch.PNG");
                 break;
             case 3:
                 input = getClass().getClassLoader().getResourceAsStream("Spider.png");
+                break;
+            case 4:
+                input = getClass().getClassLoader().getResourceAsStream("IceGiant.png");
+                break;
+            
+            case 5:
+                input = getClass().getClassLoader().getResourceAsStream("coffend.png");
                 break;
         }
         try

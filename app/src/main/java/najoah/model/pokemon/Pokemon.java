@@ -31,7 +31,7 @@ public class Pokemon implements Serializable
 
     public Pokemon(String name)
     {
-        rand_Poke = rand.nextInt(4);
+        rand_Poke = rand.nextInt(6);
         int rand_Dmg_Pool = rand.nextInt(40 - 9) + 10;
         int rand_Energy = rand.nextInt(70- rand_Dmg_Pool - 5) + 6;
         int rand_Health = rand.nextInt(70 - rand_Energy - 9) +10;
@@ -43,8 +43,8 @@ public class Pokemon implements Serializable
         healthMax = rand_Health;
         healthCurrent = healthMax;
 
-        basic = new Move("Basic Attack",rand_Dmg_Pool/2);
-        special = new Move("Special Attack",rand_Dmg_Pool/3);
+        basic = new Move("Basic Attack",rand_Dmg_Pool/4);
+        special = new Move("Special Attack",rand_Dmg_Pool/5);
         block = new Move("Block",0);
         selected = basic;
     }
@@ -65,6 +65,7 @@ public class Pokemon implements Serializable
             case 2:
                 selected = block;
                 break;
+                
         }
 
     }
