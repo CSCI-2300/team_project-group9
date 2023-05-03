@@ -39,7 +39,7 @@ public class AppTest {
         assertEquals(model.getWinLoss()[0], 2); // check if user's win count is still 1
         assertEquals(model.getWinLoss()[1], 0); // check if computer's win count is 0
     } */
-    
+
 
     // Testing User Methods:
     @Test
@@ -58,6 +58,21 @@ public class AppTest {
         assertEquals(2, userPokemons.size());
         assertEquals("User1", userPokemons.get(0).getName());
         assertEquals("User2", userPokemons.get(1).getName());
+    }
+
+    @Test
+    public void testSwitchPokemon() 
+    {
+        User user = new User();
+        Pokemon pokemon1 = new Pokemon("Pikachu");
+        Pokemon pokemon2 = new Pokemon("Charmander");
+        user.addPokemon(pokemon1);
+        user.addPokemon(pokemon2);
+        user.switchPokemon();
+        user.switchPokemon();
+        assertEquals(pokemon2.getName(), user.getPokemon().getName());
+        assertEquals(pokemon2.getHealthMax(), user.getPokemon().getHealthCurrent());
+        assertEquals(pokemon2.getEnergyMax(), user.getPokemon().getEnergyCurrent());
     }
 
 }
