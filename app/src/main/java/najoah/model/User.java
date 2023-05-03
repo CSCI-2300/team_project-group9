@@ -2,12 +2,13 @@ package najoah.model;
 
 import najoah.model.pokemon.Pokemon;
 import najoah.model.pokemon.moves.*;
+import java.io.Serializable;
 
 import java.util.Vector;
 
 //class will create a user that saves user wins and losses and pokemon history
 
-public class User {
+public class User implements Serializable {
     private Pokemon pokemon;
 
     private Vector<Pokemon> pokemons;

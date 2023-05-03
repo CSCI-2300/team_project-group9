@@ -2,10 +2,11 @@ package najoah.model;
 
 import najoah.model.pokemon.*;
 import java.util.Random;
+import java.io.Serializable;
 
-public class CatchAlgorithm
+public class CatchAlgorithm implements Serializable
 {
-    public CatchAlgorithm()
+    public CatchAlgorithm() 
     {
 
     }

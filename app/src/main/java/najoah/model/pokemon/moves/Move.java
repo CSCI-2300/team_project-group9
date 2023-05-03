@@ -1,8 +1,9 @@
 package najoah.model.pokemon.moves;
+import java.io.Serializable;
 
 
 //setting this up as a super class to be used later for passing args
-public class Move
+public class Move implements Serializable
 {
     protected String name;
     protected int dmg;

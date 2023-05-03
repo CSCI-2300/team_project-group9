@@ -3,10 +3,11 @@ package najoah.model;
 import najoah.model.pokemon.Pokemon;
 
 import java.util.Random;
+import java.io.Serializable;
 
 //Class that will create a computer AI that will randomly select the next move
 
-public class ComputerAI
+public class ComputerAI implements Serializable
 {
 
     private Pokemon pokemonCom;

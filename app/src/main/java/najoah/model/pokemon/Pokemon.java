@@ -1,6 +1,7 @@
 package najoah.model.pokemon;
 
 import najoah.model.pokemon.moves.*;
+import java.io.Serializable;
 
 /*
 pokemon class, this class will have moves, those moves will be children of a 
@@ -10,7 +11,7 @@ the option can be made here
 
 
 */
-public class Pokemon
+public class Pokemon implements Serializable
 {   
     String name;
 

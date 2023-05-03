@@ -16,11 +16,11 @@ calling bustAMove() with user's pokemon and ai's pokemon as params
 */
 public class Model implements Serializable
 {
+    private static final long serialVersionUID = 1L;
     private ComputerAI com;
     private User user;
     private MoveAlgorithm moveMagic;
-    private CatchAlgorithm catchMagic;
-    private GameGUI gui;
+    private transient CatchAlgorithm catchMagic;
     private boolean loss;
 
     public Model()
@@ -107,16 +107,6 @@ public class Model implements Serializable
         Pokemon[] arr ={user.getPokemon(),com.getPokemon()};
 
         return arr;
-    }
-
-    private void updateGui()
-    {
-        gui.update();
-    }
-    
-    public void register(GameGUI gui)
-    {
-        this.gui = gui;
     }
 
     public boolean gameStatus()
