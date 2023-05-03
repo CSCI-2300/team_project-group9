@@ -3,9 +3,61 @@
  */
 package najoah;
 
+import java.util.Vector;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
+import najoah.controller.*;
+import najoah.model.*;
+import najoah.model.pokemon.*;;
 
 public class AppTest {
-   
+
+    @Test
+    public void testGetWinLoss() 
+    {
+        Model model = new Model();
+        model.getUser().win(); // set user's win count to 1 
+        assertEquals(model.getWinLoss()[0], 1); // check if user's win count is still 1
+        assertEquals(model.getWinLoss()[1], 0); // check if computer's win count is 0
+    }
+
+   /*  @Test
+    public void testLoadFromFile() 
+    {
+        Model model = new Model();
+        model.getUser().win(); // set user's win count to 1
+        model.getUser().win(); // 2 wins
+        
+        try 
+        {
+            model.loadFromFile(); // save and load from file
+        } catch (Exception e) 
+        {
+            fail("Exception should not be thrown");
+        }
+        assertEquals(model.getWinLoss()[0], 2); // check if user's win count is still 1
+        assertEquals(model.getWinLoss()[1], 0); // check if computer's win count is 0
+    } */
+    
+
+    // Testing User Methods:
+    @Test
+    public void testAddPokemon() {
+        User user = new User();
+        Pokemon pokemon1 = new Pokemon("Pikachu");
+        Pokemon pokemon2 = new Pokemon("Charmander");
+        user.addPokemon(pokemon1);
+        user.addPokemon(pokemon2);
+        
+        Vector<Pokemon> userPokemons = user.getPokemons();
+
+        System.out.println(userPokemons.get(0).getName());
+
+        // Our current implementation resets the names to 'User+i' where i is initial 1.
+        assertEquals(2, userPokemons.size());
+        assertEquals("User1", userPokemons.get(0).getName());
+        assertEquals("User2", userPokemons.get(1).getName());
+    }
+
 }

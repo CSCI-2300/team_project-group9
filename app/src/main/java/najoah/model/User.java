@@ -11,7 +11,7 @@ import java.util.Vector;
 public class User implements Serializable {
     private Pokemon pokemon;
 
-    private Vector<Pokemon> pokemons;
+    protected Vector<Pokemon> pokemons;
     private int wins;
     private int losses;
     private int i;
@@ -79,6 +79,11 @@ public class User implements Serializable {
         pokemon.adjustEnergy(-(pokemon.getEnergyMax()-pokemon.getEnergyCurrent()));
         return true;
 
+    }
+
+    public Vector<Pokemon> getPokemons()
+    {
+        return pokemons;
     }
 
 }
