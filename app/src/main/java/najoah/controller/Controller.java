@@ -3,7 +3,14 @@ package najoah.controller;
 import najoah.model.*;
 import najoah.model.pokemon.moves.Move;
 import najoah.model.pokemon.Pokemon;
+
+import java.io.IOException;
+import java.io.*;
+
 import najoah.gui.*;
+
+import najoah.gui.ConfirmationDialog;
+import najoah.gui.FileSelector;
 
 /* The user presses an attack in the view layer of the application.
 The view layer notifies the controller of the attack selection.
@@ -33,5 +40,42 @@ public class Controller
         gameModel.turn(move);
         gameView.update();
         
+    }
+
+    private void start()
+    {
+        this.gameView = new GameGUI(this.gameModel,this);
+    }
+
+    public void userQuit()
+    {
+        if (!ConfirmationDialog.confirmSaveGame())
+        {
+            return;
+        }
+        try
+        {
+            String filePath = FileSelector.selectFileToSave();
+            FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(this.gameModel);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        }
+        catch (IOException exception)
+        {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    public void loadFromFile() throws IOException, ClassNotFoundException
+    {
+        String filePath = FileSelector.selectFileToLoad();
+        FileInputStream fileInputStream = new FileInputStream(filePath);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        this.gameModel = (Model)objectInputStream.readObject();
+        objectInputStream.close();
+        fileInputStream.close();
+        System.out.println("Loaded from file");
     }
 }
