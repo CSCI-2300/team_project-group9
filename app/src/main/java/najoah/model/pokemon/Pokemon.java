@@ -2,7 +2,7 @@ package najoah.model.pokemon;
 
 import najoah.model.pokemon.moves.*;
 import java.io.Serializable;
-
+import java.util.Random;
 /*
 pokemon class, this class will have moves, those moves will be children of a 
 superclass of Move, so we have basicMove, specialMove, and blockMove
@@ -13,33 +13,38 @@ the option can be made here
 */
 public class Pokemon implements Serializable
 {   
-    String name;
-
+    private String name;
+    Random rand = new Random();
     //this is all the standard rn
-    Move basic;
-    Move special;
-    Move block;
+    private Move basic;
+    private Move special;
+    private Move block;
 
-    int healthMax;
-    int healthCurrent;
+    private int healthMax;
+    private int healthCurrent;
 
-    int energyCurrent;
-    int energyMax;
+    private int energyCurrent;
+    private int energyMax;
     //this is to send the move selected to the model, to the move algorithm
-    Move selected;
+    private Move selected;
+    private int rand_Poke;
 
     public Pokemon(String name)
     {
+        rand_Poke = rand.nextInt(4);
+        int rand_Dmg_Pool = rand.nextInt(40 - 9) + 10;
+        int rand_Energy = rand.nextInt(70- rand_Dmg_Pool - 5) + 6;
+        int rand_Health = rand.nextInt(70 - rand_Energy - 9) +10;
         this.name = name;
 
-        energyCurrent = 10;
+        energyCurrent = rand_Energy;
         energyMax = energyCurrent;
 
-        healthMax = 50;
+        healthMax = rand_Health;
         healthCurrent = healthMax;
 
-        basic = new Move("Basic Attack",6);
-        special = new Move("Special Attack",4);
+        basic = new Move("Basic Attack",rand_Dmg_Pool/2);
+        special = new Move("Special Attack",rand_Dmg_Pool/3);
         block = new Move("Block",0);
         selected = basic;
     }
@@ -67,6 +72,11 @@ public class Pokemon implements Serializable
     public void setMove(String type, int dmg)
     {
         this.selected = new Move(type,dmg);
+    }
+
+    public int getType()
+    {
+        return this.rand_Poke; 
     }
 
     public void adjustHealth(int delta)

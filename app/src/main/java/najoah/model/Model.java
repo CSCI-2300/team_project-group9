@@ -42,13 +42,15 @@ public class Model implements Serializable
             this.user.getPokemon().setMove("Catch",0);
 
             if(!catchMagic.attemptCatch(user, com)){
-                this.user.getPokemon().adjustHealth(com.getPokemon().getMove().getDmg()+5);
                 this.com.nextMove();
+                moveMagic.bustAMove(user.getPokemon(), com.getPokemon());
+            }
+            else{
+                nextFight();
+                this.com.getPokemon().setMove("breakout but failed, and was captured",0);
+                this.user.win();
                 return;
             }
-            nextFight();
-            this.com.getPokemon().setMove("breakout but failed, and was captured",0);
-            this.user.win();
             
         }
         else
@@ -57,6 +59,7 @@ public class Model implements Serializable
             com.nextMove();
             moveMagic.bustAMove(user.getPokemon(), com.getPokemon());
             
+        }
             if(user.getPokemon().getHealthCurrent() <= 0)
             {
                 this.user.lose();
@@ -75,7 +78,6 @@ public class Model implements Serializable
                 this.com.getPokemon().setMove("good fight but lost",0);
                 this.user.win();
             }
-        }
     }
 
     private void userTurn(String move)
@@ -100,8 +102,7 @@ public class Model implements Serializable
 
     private void nextFight()
     {
-        user.getPokemon().adjustHealth(-(user.getPokemon().getHealthMax()-user.getPokemon().getHealthCurrent()));
-        user.getPokemon().adjustEnergy(-(user.getPokemon().getEnergyMax()-user.getPokemon().getEnergyCurrent()));
+        user.getPokemon().adjustEnergy(-(user.getPokemon().getEnergyMax()/2 - user.getPokemon().getEnergyCurrent()));
         com.genNewPokemon();
     }
 

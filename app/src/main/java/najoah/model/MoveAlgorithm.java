@@ -32,43 +32,33 @@ public class MoveAlgorithm implements Serializable
         //removing energy or health for com and user based on move chosen
         switch(com.getMove().getName())
         {
-            case "Basic Attack":
-                com.adjustEnergy(4);
-                if(com.getEnergyCurrent() < 0){com.adjustHealth(4);}
-                break;
-
             case "Special Attack":
                 com.adjustEnergy(4);
-                if(com.getEnergyCurrent() < 0){com.adjustHealth(6);}
+                if(com.getEnergyCurrent() <= 0){com.adjustHealth(6);}
                 break;
 
                 
             case "Block":
                 com.adjustEnergy(3);
-                if(com.getEnergyCurrent() < 0){com.adjustHealth(3);}
+                if(com.getEnergyCurrent() <= 0){com.adjustHealth(4);}
                 break;
         }
 
         switch(user.getMove().getName())
         {
-            case "Basic Attack":
-                user.adjustEnergy(4);
-                if(user.getEnergyCurrent() < 0){user.adjustHealth(4);}
-                break;
-
             case "Special Attack":
                 user.adjustEnergy(4);
-                if(user.getEnergyCurrent() < 0){user.adjustHealth(6);}
+                if(user.getEnergyCurrent() <= 0){user.adjustHealth(6);}
                 break;
 
                 
             case "Block":
                 user.adjustEnergy(3);
-                if(user.getEnergyCurrent() < 0){user.adjustHealth(3);}
+                if(user.getEnergyCurrent() <= 0){user.adjustHealth(4);}
                 break;
         }
 
-        System.out.println(user.getMove().getName()+ " " + com.getMove().getName());
+        System.out.println(user.getMove().getName()+ " " +user.getMove().getDmg()+" " + com.getMove().getName()+ " "+ com.getMove().getDmg());
         //this is where code for type checks, dmg calculations and edits of health
         //gating if both are blocks
         if(comisAttack && userisAttack)
@@ -108,7 +98,7 @@ public class MoveAlgorithm implements Serializable
         // Joe: ^ shouldn't this below conditional before special move because it's doubling the damage?
         if(attacker.getMove().getName().equals("Special Attack"))
         {
-            defender.adjustHealth(attacker.getMove().getDmg()*2);
+            defender.adjustHealth(attacker.getMove().getDmg()*2+4);
             return;
         }
         //user takes reduced dmg if blocking, com takes some recoil

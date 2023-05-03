@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 
 public class GameGUI implements ActionListener
 {
+    private String helpText;
     private JFrame mainFrame;
     private JPanel mainPanel;
     private JPanel bottomPanel;
@@ -63,14 +64,11 @@ public class GameGUI implements ActionListener
             forestImage = ImageIO.read(input);
             forestLabel.setIcon(new ImageIcon(new ImageIcon(forestImage).getImage().getScaledInstance(768, 256, Image.SCALE_DEFAULT)));
             forestLabel.setBounds(30,8,769,257);
-            //forestLabel.setOpaque(true);
-            //forestLabel.setLayout(new BorderLayout());
         }
         catch(Exception e){}
 
 
         layering = new JLayeredPane();
-        //layering.setPreferredSize(new Dimension(770,300));
         layering.setBounds(0,0,770,300);
 
 
@@ -116,9 +114,10 @@ public class GameGUI implements ActionListener
 
         //making seperate pokemon panels
         this.playerPanel = new HealthBarPanel(model.getPokemon()[0].getName(), model.getPokemon()[0].getHealthMax(),model.getPokemon()[0].getEnergyMax());
-        
         this.compPanel = new HealthBarPanel(model.getPokemon()[1].getName(), model.getPokemon()[1].getHealthMax(),model.getPokemon()[1].getEnergyMax());
 
+        this.playerPanel.setType(model.getPokemon()[0].getType());
+        this.compPanel.setType(model.getPokemon()[1].getType());
         //making energy bar
         //this can be relatively hardcoded, or we can set this too be scaled as aratio off of main panel size/frame
         playerPanel.setBounds(70,30,150,230);
@@ -152,9 +151,16 @@ public class GameGUI implements ActionListener
         mainFrame.pack();
         mainFrame.setVisible(true);
 
-    }
+        helpText = "Welcome to Najoah, the Goal of this game is to win as many battles/catch as many creatures as possible,"
+                + " your creatures, and the opponenets have 3 moves, #####"
+                + "1) a Basic attack: this does the most damage out of any attack, however if the oponent blocks, you will take damage ##### "
+                + "2) a Special attack this is the weakest attack, however if the opponent blocks, you deal double damage #####"
+                + "3) a Block, this reduces damage of the Basic attack, and returns some to the opponent, but if the oponent uses a special, or blocks as well, you are in for some hurt   ###### "
+                + "If your health reaches 0 you will lose your creature, if the opponent's hits 0 you will face a new creature.  #####   "
+                + "You also have an Energy Bar, blocks and Special attacks cost energy, when your energy reaches zero, Specials and Blocks will cost Health!!  ##### "
+                + "If the opponent is low enough, try catching them, if you succeed they will be healed and added to your party, if the catch fails the enemy may hurt you.   #####  ";
 
-
+    }   
     //Gets input from user and returns selected move as a string
     @Override
     public void actionPerformed(ActionEvent e)
@@ -181,9 +187,12 @@ public class GameGUI implements ActionListener
         this.playerPanel.setEnergy(pokes[0].getEnergyCurrent(),pokes[0].getEnergyMax());
         this.compPanel.setEnergy(pokes[1].getEnergyCurrent(),pokes[1].getEnergyMax());
 
-        this.playerPanel.setOwner(model.getPokemon()[0].getName());
-        this.compPanel.setOwner(model.getPokemon()[1].getName());
-    
+        this.playerPanel.setOwner(pokes[0].getName());
+        this.compPanel.setOwner(pokes[1].getName());
+        
+        this.playerPanel.setType(pokes[0].getType());
+        this.compPanel.setType(pokes[1].getType());
+
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+"."+" The computer perfomed a "+pokes[1].getMove().getName()+".");
 
         this.displayEndScreen(model.gameStatus());
@@ -222,7 +231,8 @@ public class GameGUI implements ActionListener
             startScreen.setVisible(false);
             helpPanel = new JPanel();
             //Noah you can input help info in below label
-            JLabel helpLabel = new JLabel("Input Help here");
+            JLabel helpLabel = new JLabel("<html>"+ helpText + "</html>");
+            helpLabel.setPreferredSize(new Dimension(400,400));
             JButton backButton = new JButton("Back");
             backButton.addActionListener(this);
             helpPanel.add(helpLabel);
