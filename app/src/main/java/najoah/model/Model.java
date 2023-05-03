@@ -1,6 +1,9 @@
 package najoah.model;
 
 import najoah.model.pokemon.*;
+
+import java.io.Serializable;
+
 import najoah.gui.GameGUI;
 /*
 this will be our Model, in here all other logical classes will be held
@@ -11,7 +14,7 @@ calling bustAMove() with user's pokemon and ai's pokemon as params
 
 
 */
-public class Model
+public class Model implements Serializable
 {
     private ComputerAI com;
     private User user;

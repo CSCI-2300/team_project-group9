@@ -27,11 +27,23 @@ public class Controller
     private Model gameModel;
     private GameGUI gameView;
     
+    public Controller()
+    {
+        try 
+        {
+            loadFromFile();
+            start();
+        }
+        catch (Exception error)
+        {
+            System.out.println(error.getMessage());
+        }
+    }
 
     public Controller(Model gameModel) 
     {  
         this.gameModel = gameModel;
-        this.gameView = new GameGUI(gameModel,this);
+        start();
 
     }   
 
@@ -39,7 +51,6 @@ public class Controller
     {
         gameModel.turn(move);
         gameView.update();
-        
     }
 
     private void start()

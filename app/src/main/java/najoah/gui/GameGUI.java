@@ -139,6 +139,12 @@ public class GameGUI implements ActionListener
        
         startScreen = new StartScreen(this);
 
+        this.mainFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e){
+                controller.userQuit();
+            }
+        });
+
         //mainPanel.add(topPanel, BorderLayout.CENTER);
         //mainPanel.add(bottomPanel, BorderLayout.SOUTH);
         mainPanel.add(startScreen);
