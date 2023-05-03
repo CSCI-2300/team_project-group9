@@ -209,7 +209,13 @@ public class GameGUI implements ActionListener
             mainPanel.add(bottomPanel, BorderLayout.SOUTH);
         }
 
-        //have to implement continue 
+        if (input == "Continue")
+        {
+            this.controller.loadGame();
+            startScreen.setVisible(false);
+            mainPanel.add(topPanel, BorderLayout.CENTER);
+            mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        }
 
         if (input == "Help")
         {

@@ -31,6 +31,10 @@ public class Controller
     {  
         this.gameModel = gameModel;
         start();
+    }
+
+    public void loadGame()
+    {
         try 
         {
             this.gameModel.loadFromFile();
@@ -39,8 +43,8 @@ public class Controller
         {
             System.out.println(error.getMessage());
         }
-
-    }   
+        this.gameView.update();
+    }
 
     public void playTurn(String move) 
     {
