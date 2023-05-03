@@ -26,24 +26,19 @@ public class Controller
 {
     private Model gameModel;
     private GameGUI gameView;
-    
-    public Controller()
-    {
-        try 
-        {
-            loadFromFile();
-            start();
-        }
-        catch (Exception error)
-        {
-            System.out.println(error.getMessage());
-        }
-    }
 
     public Controller(Model gameModel) 
     {  
         this.gameModel = gameModel;
         start();
+        try 
+        {
+            this.gameModel.loadFromFile();
+        }
+        catch (Exception error)
+        {
+            System.out.println(error.getMessage());
+        }
 
     }   
 
@@ -69,7 +64,8 @@ public class Controller
             String filePath = FileSelector.selectFileToSave();
             FileOutputStream fileOutputStream = new FileOutputStream(filePath);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(this.gameModel);
+            objectOutputStream.writeObject(this.gameModel.getUser());
+            objectOutputStream.writeObject(this.gameModel.getComputer());
             objectOutputStream.close();
             fileOutputStream.close();
         }
@@ -77,16 +73,5 @@ public class Controller
         {
             System.out.println(exception.getMessage());
         }
-    }
-
-    public void loadFromFile() throws IOException, ClassNotFoundException
-    {
-        String filePath = FileSelector.selectFileToLoad();
-        FileInputStream fileInputStream = new FileInputStream(filePath);
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        this.gameModel = (Model)objectInputStream.readObject();
-        objectInputStream.close();
-        fileInputStream.close();
-        System.out.println("Loaded from file");
     }
 }

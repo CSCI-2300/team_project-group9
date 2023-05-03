@@ -1,8 +1,12 @@
 package najoah.model;
 
 import najoah.model.pokemon.*;
+import java.io.IOException;
+import java.io.*;
 
 import java.io.Serializable;
+import najoah.gui.ConfirmationDialog;
+import najoah.gui.FileSelector;
 
 import najoah.gui.GameGUI;
 /*
@@ -16,11 +20,10 @@ calling bustAMove() with user's pokemon and ai's pokemon as params
 */
 public class Model implements Serializable
 {
-    private static final long serialVersionUID = 1L;
     private ComputerAI com;
     private User user;
     private MoveAlgorithm moveMagic;
-    private transient CatchAlgorithm catchMagic;
+    private CatchAlgorithm catchMagic;
     private boolean loss;
 
     public Model()
@@ -120,5 +123,26 @@ public class Model implements Serializable
         return arr;
     }
 
+    public User getUser()
+    {
+        return user;
+    }
+
+    public ComputerAI getComputer()
+    {
+        return com;
+    }
+
+    public void loadFromFile() throws IOException, ClassNotFoundException
+    {
+        String filePath = FileSelector.selectFileToLoad();
+        FileInputStream fileInputStream = new FileInputStream(filePath);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        user = (User)objectInputStream.readObject();
+        com = (ComputerAI)objectInputStream.readObject();
+        objectInputStream.close();
+        fileInputStream.close();
+        System.out.println("Loaded from file");
+    }
 }
 
