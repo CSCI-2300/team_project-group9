@@ -1,7 +1,6 @@
 package najoah.model;
 import najoah.model.pokemon.Pokemon;
 import najoah.model.pokemon.moves.*;
-import java.io.Serializable;
 /*
 this is where we will do the math on the moves selected, i think it would be best
 if we passed the moves, in their entirety to this class, as moves will
@@ -11,7 +10,7 @@ have some level of uniqieness between pokemon
 
 //TODO: may need to check for health to avoid negative nums, maybe set bounds
 // or this could be done in GUI even if internal is negative
-public class MoveAlgorithm implements Serializable
+public class MoveAlgorithm
 {
     public MoveAlgorithm()
     {

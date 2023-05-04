@@ -140,7 +140,10 @@ public class GameGUI implements ActionListener
 
         this.mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e){
-                controller.userQuit();
+                if (!model.gameStatus()){
+                    controller.userQuit();
+                }
+                
             }
         });
 
