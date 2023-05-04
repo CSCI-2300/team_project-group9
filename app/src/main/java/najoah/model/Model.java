@@ -134,6 +134,12 @@ public class Model implements Serializable
         return com;
     }
 
+    public void restart()
+    {
+        this.user = new User();
+        this.com = new ComputerAI();
+    }
+
     public void loadFromFile() throws IOException, ClassNotFoundException
     {
         String filePath = FileSelector.selectFileToLoad();

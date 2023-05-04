@@ -26,6 +26,7 @@ public class GameGUI implements ActionListener
     private StartScreen startScreen;
 
     private JLabel moveLabel;
+    private JLabel scoreLabel;
     private Controller controller;
     private Model model;
     private HealthBarPanel playerPanel;
@@ -83,17 +84,23 @@ public class GameGUI implements ActionListener
 
         //making the two panels top and bottum
         bottomPanel = new JPanel();
+        GridLayout bottomLayout = new GridLayout(0,1);
+        bottomPanel.setLayout(bottomLayout);
         topPanel = new JPanel();
         topPanel.setLayout(null);
 
         topPanel.setPreferredSize(new Dimension(800,300));
-        bottomPanel.setPreferredSize(new Dimension(300,75));
+        bottomPanel.setPreferredSize(new Dimension(300,125));
         
         //making move Label
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         this.moveLabel = new JLabel();
+        this.moveLabel.setHorizontalAlignment(JLabel.CENTER);
         this.moveLabel.setBorder(border);
-        this.moveLabel.setVerticalAlignment(JLabel.BOTTOM);
+        
+        //making score label
+        this.scoreLabel = new JLabel("Wins: 0 Losses: 0");
+        this.scoreLabel.setHorizontalAlignment(JLabel.CENTER);
 
         //creating moves
         JButton basic = new JButton("Basic Attack");
@@ -112,6 +119,10 @@ public class GameGUI implements ActionListener
         catchButton.setPreferredSize(new Dimension(150,25));
         catchButton.addActionListener(this);
 
+        JButton restartButton = new JButton("Restart");
+        restartButton.setPreferredSize(new Dimension(150,25));
+        restartButton.addActionListener(this);
+
         //making seperate pokemon panels
         this.playerPanel = new HealthBarPanel(model.getPokemon()[0].getName(), model.getPokemon()[0].getHealthMax(),model.getPokemon()[0].getEnergyMax());
         this.compPanel = new HealthBarPanel(model.getPokemon()[1].getName(), model.getPokemon()[1].getHealthMax(),model.getPokemon()[1].getEnergyMax());
@@ -129,11 +140,18 @@ public class GameGUI implements ActionListener
     
         topPanel.add(layering);
 
-        bottomPanel.add(moveLabel);
-        bottomPanel.add(basic);
-        bottomPanel.add(special);
-        bottomPanel.add(block);
-        bottomPanel.add(catchButton);
+        JPanel fightActions = new JPanel();
+        fightActions.add(basic);
+        fightActions.add(special);
+        fightActions.add(block);
+
+        JPanel otherActions = new JPanel();
+        otherActions.add(catchButton);
+        otherActions.add(restartButton);
+        
+        bottomPanel.add(scoreLabel);
+        bottomPanel.add(fightActions);
+        bottomPanel.add(otherActions);
         bottomPanel.add(moveLabel);
        
         startScreen = new StartScreen(this);
@@ -143,7 +161,6 @@ public class GameGUI implements ActionListener
                 if (!model.gameStatus()){
                     controller.userQuit();
                 }
-                
             }
         });
 
@@ -174,6 +191,13 @@ public class GameGUI implements ActionListener
         {
             startScreenLogic(input);
         }
+        else if (input == "Restart")
+        {
+            this.controller.restartGame();
+            update();
+            moveLabel.setText("");
+            
+        }
         else
         {
         //tell controller about selected move
@@ -197,7 +221,7 @@ public class GameGUI implements ActionListener
         this.compPanel.setType(pokes[1].getType());
 
         this.moveLabel.setText("The user performed a "+pokes[0].getMove().getName()+"."+" The computer perfomed a "+pokes[1].getMove().getName()+".");
-
+        this.scoreLabel.setText("Wins: "+model.getWinLoss()[0]+" Losses: "+model.getWinLoss()[1]);
         this.displayEndScreen(model.gameStatus());
     }
 

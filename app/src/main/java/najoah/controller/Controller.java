@@ -57,6 +57,11 @@ public class Controller
         this.gameView = new GameGUI(this.gameModel,this);
     }
 
+    public void restartGame()
+    {
+        this.gameModel.restart();
+    }
+
     public void userQuit()
     {
         if (!ConfirmationDialog.confirmSaveGame())
